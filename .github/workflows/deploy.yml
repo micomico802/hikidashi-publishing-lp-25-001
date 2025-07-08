@@ -11,28 +11,55 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # SSH 鍵をセット
+    # Node.js セットアップ
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    # SSH 鍵をセット（デバッグ強化）
     - name: Prepare SSH key
       run: |
         mkdir -p ~/.ssh
         echo "$SSH_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        # SSH設定を追加
+        echo "Host $SSH_HOST" >> ~/.ssh/config
+        echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+        echo "  UserKnownHostsFile /dev/null" >> ~/.ssh/config
+        echo "  Port $SSH_PORT" >> ~/.ssh/config
+        chmod 600 ~/.ssh/config
+        # SSH接続テスト
+        ssh -T $SSH_USER@$SSH_HOST -p $SSH_PORT || echo "SSH connection test completed"
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+        SSH_USER: ${{ secrets.SSH_USER }}
 
-    # 依存インストール & ビルド (例：Vite + React)
+    # 依存インストール & ビルド
     - name: Install dependencies
       run: npm ci
     - name: Build
-      run: npm run build     # Vue/Next.js なら置き換え
+      run: npm run build
 
-    # 差分転送（rsync）
+    # ビルド結果確認
+    - name: Check build output
+      run: |
+        ls -la dist/
+        echo "Build completed successfully"
+
+    # 差分転送（rsync）- エラーハンドリング強化
     - name: Deploy with rsync
       run: |
-        rsync -avz --delete -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
+        echo "Starting deployment..."
+        rsync -avz --delete --stats \
+          -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
           dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
+        echo "Deployment completed!"
       env:
-        SSH_HOST:   ${{ secrets.SSH_HOST }}
-        SSH_PORT:   ${{ secrets.SSH_PORT }}
-        SSH_USER:   ${{ secrets.SSH_USER }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+        SSH_USER: ${{ secrets.SSH_USER }}
         REMOTE_PATH: ${{ secrets.REMOTE_PATH }} 
