@@ -4,7 +4,7 @@ import { getImagePath } from '../utils/imageUtils';
 // デフォルトのローカル画像パス（LPの表示順序に合わせて番号付け）
 const defaultImages: Record<string, string> = {
   hero: 'hero-default.png',                    // 001_ヒーロー
-  problem: 'problem-default.jpg',              // 002_問題提起
+  problem: 'problem-default.png',              // 002_問題提起
   achievement: 'achievement-default.png',      // 003_実績
   kindleRank: 'kindle-rank-default.jpg',      // 003_Kindleランキング
   publishNow: 'publishnow1-default.png',      // 004_今出版すべき理由
@@ -23,7 +23,7 @@ const defaultImages: Record<string, string> = {
   plans: 'plan1-default.jpg',                    // 010_料金プラン
   bonuses: 'whychoose3-default.jpg',             // 011_ボーナス
   testimonials: 'publishnow2-default.png',       // 012_お客様の声
-  limitedOffer: 'limited-offer-default.jpg',    // 013_限定オファー
+  limitedOffer: 'limited-offer-default.png',    // 013_限定オファー
   faq: 'publishnow3-default.png',                // 014_よくある質問
   commitment: 'commit1-default.jpg',             // 015_コミットメント
   finalCta: 'final-cta-default.jpg',            // 016_最終CTA
@@ -43,14 +43,11 @@ export const ImageProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const getImage = (key: string): string => {
     // カスタム画像が設定されている場合はそれを使用
     if (customImages[key]) {
-      console.log(`🎨 カスタム画像を使用: ${key} => ${customImages[key]}`);
       return customImages[key];
     }
     // デフォルト画像を使用
     const defaultFilename = defaultImages[key];
-    const imagePath = defaultFilename ? getImagePath(defaultFilename) : '';
-    console.log(`🖼️ デフォルト画像: ${key} => ${defaultFilename} => ${imagePath}`);
-    return imagePath;
+    return defaultFilename ? getImagePath(defaultFilename) : '';
   };
 
   const updateImage = (key: string, filename: string) => {

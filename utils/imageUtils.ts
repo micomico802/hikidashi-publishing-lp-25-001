@@ -37,7 +37,7 @@ export const availableImages: Record<string, AvailableImage[]> = {
     { name: '006_実績4', filename: 'whychoose2-default.jpg', description: '006_プロも認める実績画像' },
   ],
   limitedOffer: [
-    { name: '013_限定オファー', filename: 'limited-offer-default.jpg', description: '013_限定オファー用のデフォルト画像' },
+    { name: '013_限定オファー', filename: 'limited-offer-default.png', description: '013_限定オファー用のデフォルト画像' },
   ],
   finalCta: [
     { name: '016_最終CTA', filename: 'final-cta-default.jpg', description: '016_最終CTA用のデフォルト画像' },
@@ -55,8 +55,8 @@ export const availableImages: Record<string, AvailableImage[]> = {
     { name: '004_今出版1', filename: 'publishnow1-default.png', description: '004_今出版すべき理由画像1' },
     { name: '004_今出版2', filename: 'publishnow2-default.png', description: '004_今出版すべき理由画像2' },
     { name: '004_今出版3', filename: 'publishnow3-default.png', description: '004_今出版すべき理由画像3' },
-    { name: '004_今出版4', filename: 'publishnow4-default.jpg', description: '004_今出版すべき理由画像4' },
-    { name: '004_今出版5', filename: 'publishnow5-default.jpg', description: '004_今出版すべき理由画像5' },
+    { name: '004_今出版4', filename: 'publishnow4-default.png', description: '004_今出版すべき理由画像4' },
+    { name: '004_今出版5', filename: 'publishnow5-default.png', description: '004_今出版すべき理由画像5' },
   ],
   whyChoose: [
     { name: '007_選ばれる理由1', filename: 'whychoose1-default.jpg', description: '007_選ばれる理由画像1' },
@@ -72,11 +72,11 @@ export const availableImages: Record<string, AvailableImage[]> = {
   bonuses: [
     { name: '011_ボーナス1', filename: 'whychoose3-default.jpg', description: '011_ボーナスセクション用画像1' },
     { name: '011_ボーナス2', filename: 'whychoose4-default.jpg', description: '011_ボーナスセクション用画像2' },
-    { name: '011_ボーナス3', filename: 'publishnow4-default.jpg', description: '011_ボーナスセクション用画像3' },
+    { name: '011_ボーナス3', filename: 'publishnow4-default.png', description: '011_ボーナスセクション用画像3' },
   ],
   testimonials: [
     { name: '012_お客様の声1', filename: 'publishnow2-default.png', description: '012_お客様の声用画像1' },
-    { name: '012_お客様の声2', filename: 'publishnow5-default.jpg', description: '012_お客様の声用画像2' },
+    { name: '012_お客様の声2', filename: 'publishnow5-default.png', description: '012_お客様の声用画像2' },
     { name: '012_お客様の声3', filename: 'future1-default.jpg', description: '012_お客様の声用画像3' },
   ],
   faq: [

@@ -31,9 +31,9 @@ const ProblemSection: React.FC = () => {
               <p className="text-neutral-dark text-lg">{problem}</p>
             </div>
           ))}
-        </div>
-        <div className="mt-12 text-center">
-            <img src={getImage('problem')} alt="悩みを抱える人のイメージ" className="mx-auto rounded-lg shadow-lg"/>
+          <div className="mt-12 text-center">
+              <img src={getImage('problem')} alt="悩みを抱える人のイメージ" className="my-6 rounded-lg shadow-md mx-auto"/>
+          </div>
         </div>
       </div>
     </section>

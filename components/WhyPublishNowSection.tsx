@@ -54,12 +54,12 @@ const WhyPublishNowSection: React.FC = () => {
     {
       title: "ライバルと一線を画す「著者」という圧倒的なブランディング。",
       description: "情報が民主化され、誰もが発信者になれる現代だからこそ、「著者」という肩書きは、あなたの専門性や信頼性を際立たせる強力な武器となります。あなたの経験や知識を体系的にまとめた一冊は、競合との明確な差別化を生み出し、市場におけるあなたの優位性を揺るぎないものにするでしょう。もはや、これは「あったら良いな」ではなく「必須レベル」の戦略と言えるかもしれません。",
-      imageSrc: getImagePath('publishnow4-default.jpg')
+      imageSrc: getImagePath('publishnow4-default.png')
     },
     {
       title: "成功の鍵は「市場での優位性」。そして、それは早い者勝ちの側面も。",
       description: "残念ながら、どんなに素晴らしいアイデアや経験も、もし他の誰かが先にそれを魅力的な形で世に出してしまえば、あなたの声が届く範囲は限定されてしまう可能性があります。 市場であなたの存在感を確固たるものにするためにも、「今、行動する」ことが極めて重要なのです。",
-      imageSrc: getImagePath('publishnow5-default.jpg')
+      imageSrc: getImagePath('publishnow5-default.png')
     }
   ];
 
