@@ -34,21 +34,22 @@ const CheckCircleIcon: React.FC<{ className?: string }> = ({ className }) => (
 const WhyPublishNowSection: React.FC = () => {
   const { getImage } = useImages();
 
+  // ImageContextにpublishNowの個別画像キーを追加する必要があります
   const reasons = [
     {
       title: "出版のハードルは、驚くほど低くなりました。",
       description: "かつて書籍出版は、一部の選ばれた専門家や有名人の特権のようなものでした。しかし時代は変わり、特に電子書籍の登場によって、あなたの熱い想いを世界に発信するハードルは劇的に下がったのです。",
-      imageSrc: getImagePath('publishnow1-default.jpg')
+      imageSrc: getImagePath('publishnow1-default.png')  // 一時的に直接参照
     },
     {
       title: "あなたの価値が正当に評価される「高印税率」という現実。",
       description: "従来の商業出版では印税が5～10％程度であるのに対し、Kindle電子書籍では最大で35～70％もの印税率が可能です。 これは、あなたの時間と労力、そして何よりその貴重な経験が生み出す価値が、よりダイレクトに、そして正当にあなたに還元されることを意味します。最大で14倍もの差があるこのチャンスを、見逃す手はありません。",
-      imageSrc: getImagePath('publishnow2-default.jpg')
+      imageSrc: getImagePath('publishnow2-default.png')  // 一時的に直接参照
     },
     {
       title: "成長し続ける「電子書籍市場」という追い風。",
       description: "スマートフォンやタブレットで手軽に書籍を読むスタイルはますます広がり、電子書籍の市場は着実に拡大を続けています。あなたのメッセージを求める潜在的な読者は、今この瞬間も増え続けているのです。",
-      imageSrc: getImagePath('publishnow3-default.jpg')
+      imageSrc: getImagePath('publishnow3-default.png')  // 一時的に直接参照
     },
     {
       title: "ライバルと一線を画す「著者」という圧倒的なブランディング。",

@@ -21,7 +21,12 @@ const AchievementSection1: React.FC = () => {
               驚くべきことに、モニターの多くの方が、通常であれば半年以上かかると言われる書籍の本文作成を、
               なんと、平均してたったの<HighlightText>「1ヶ月」</HighlightText>で完了されたのです！
             </p>
-            <img src={getImage('achievement')} alt="スピーディーな出版プロセス" className="my-6 rounded-lg shadow-md mx-auto"/>
+            <div className="my-6">
+              <p className="text-sm text-gray-600 mb-2">画像パス: {getImage('achievement')}</p>
+              <img src={getImage('achievement')} alt="スピーディーな出版プロセス" className="rounded-lg shadow-md mx-auto"/>
+              <p className="text-sm text-gray-600 mt-2">直接パス: /images/achievement-default.png</p>
+              <img src="/images/achievement-default.png" alt="直接パステスト" className="rounded-lg shadow-md mx-auto mt-2"/>
+            </div>
             <p>
               これは、あなたが「書けない…」と悩む時間を大幅に短縮し、貴重な経験や知識を、よりスピーディーに世に届けられることを意味しています。
             </p>
