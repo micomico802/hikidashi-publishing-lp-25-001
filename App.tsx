@@ -1,4 +1,3 @@
-
 import React from 'react';
 import HeroSection from './components/HeroSection';
 import ProblemSection from './components/ProblemSection';
@@ -18,7 +17,6 @@ import CommitmentSection from './components/CommitmentSection';
 import FinalCallToActionSection from './components/FinalCallToActionSection';
 import Footer from './components/Footer';
 import { ImageProvider } from './contexts/ImageContext';
-import ImageCustomizer from './components/ImageCustomizer';
 
 const App: React.FC = () => {
   return (
@@ -43,7 +41,6 @@ const App: React.FC = () => {
           <FinalCallToActionSection />
         </main>
         <Footer />
-        <ImageCustomizer />
       </div>
     </ImageProvider>
   );

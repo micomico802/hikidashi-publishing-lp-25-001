@@ -1,0 +1,38 @@
+name: Deploy SPA to ConoHa WING
+
+on:
+  push:
+    branches: [ main ]   # ←任意ブランチで OK
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # SSH 鍵をセット
+    - name: Prepare SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+
+    # 依存インストール & ビルド (例：Vite + React)
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build     # Vue/Next.js なら置き換え
+
+    # 差分転送（rsync）
+    - name: Deploy with rsync
+      run: |
+        rsync -avz --delete -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
+          dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
+      env:
+        SSH_HOST:   ${{ secrets.SSH_HOST }}
+        SSH_PORT:   ${{ secrets.SSH_PORT }}
+        SSH_USER:   ${{ secrets.SSH_USER }}
+        REMOTE_PATH: ${{ secrets.REMOTE_PATH }} 
