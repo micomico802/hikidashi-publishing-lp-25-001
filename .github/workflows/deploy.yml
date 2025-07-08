@@ -18,49 +18,77 @@ jobs:
         node-version: '18'
         cache: 'npm'
 
-    # SSH 鍵をセット（詳細デバッグ）
-    - name: Prepare SSH key
+    # SSH 鍵をセット（鍵形式の詳細確認）
+    - name: Prepare and validate SSH key
       run: |
         mkdir -p ~/.ssh
         echo "$SSH_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        
+        # SSH鍵の詳細確認
+        echo "=== SSH Key Validation ==="
+        echo "SSH key file size: $(wc -c < ~/.ssh/id_rsa) bytes"
+        echo "SSH key first line:"
+        head -1 ~/.ssh/id_rsa
+        echo "SSH key last line:"
+        tail -1 ~/.ssh/id_rsa
+        echo "SSH key line count: $(wc -l < ~/.ssh/id_rsa)"
+        
+        # SSH鍵の形式確認
+        if ssh-keygen -l -f ~/.ssh/id_rsa 2>/dev/null; then
+          echo "✅ SSH key format is valid"
+          ssh-keygen -l -f ~/.ssh/id_rsa
+        else
+          echo "❌ SSH key format is invalid"
+          echo "Trying to fix potential line ending issues..."
+          dos2unix ~/.ssh/id_rsa 2>/dev/null || true
+          chmod 600 ~/.ssh/id_rsa
+          if ssh-keygen -l -f ~/.ssh/id_rsa 2>/dev/null; then
+            echo "✅ SSH key fixed and now valid"
+            ssh-keygen -l -f ~/.ssh/id_rsa
+          else
+            echo "❌ SSH key still invalid after fixing attempt"
+          fi
+        fi
+        
+        # 公開鍵を生成してチェック
+        echo "=== Generated Public Key ==="
+        ssh-keygen -y -f ~/.ssh/id_rsa 2>/dev/null || echo "Failed to generate public key"
+        
         # SSH設定を追加
         echo "Host $SSH_HOST" >> ~/.ssh/config
         echo "  StrictHostKeyChecking no" >> ~/.ssh/config
         echo "  UserKnownHostsFile /dev/null" >> ~/.ssh/config
         echo "  Port $SSH_PORT" >> ~/.ssh/config
         echo "  LogLevel VERBOSE" >> ~/.ssh/config
+        echo "  IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+        echo "  IdentitiesOnly yes" >> ~/.ssh/config
         chmod 600 ~/.ssh/config
-        # SSH鍵の権限確認
+        
+        echo "=== SSH Configuration ==="
+        cat ~/.ssh/config
         ls -la ~/.ssh/
-        echo "SSH key setup completed"
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_PORT: ${{ secrets.SSH_PORT }}
 
-    # SSH接続の詳細テスト
-    - name: Test SSH connection
+    # SSH接続の段階的テスト
+    - name: Test SSH authentication step by step
       run: |
-        echo "Testing SSH connection with verbose output..."
-        ssh -v -T $SSH_USER@$SSH_HOST -p $SSH_PORT -o ConnectTimeout=10 || echo "SSH test completed (exit code: $?)"
-        echo "Testing basic SSH command..."
-        ssh -v $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Hello from server'; pwd; whoami" || echo "SSH command test completed (exit code: $?)"
+        echo "=== Testing SSH Key Authentication ==="
+        echo "1. Testing connection without executing commands..."
+        ssh -v -o ConnectTimeout=10 -o BatchMode=yes $SSH_USER@$SSH_HOST -p $SSH_PORT "exit" 2>&1 || echo "Basic connection test completed (exit code: $?)"
+        
+        echo "2. Testing with simple command..."
+        ssh -v -o ConnectTimeout=10 -o BatchMode=yes $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Hello from server'" 2>&1 || echo "Simple command test completed (exit code: $?)"
+        
+        echo "3. Testing whoami command..."
+        ssh -v -o ConnectTimeout=10 -o BatchMode=yes $SSH_USER@$SSH_HOST -p $SSH_PORT "whoami" 2>&1 || echo "Whoami test completed (exit code: $?)"
       env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_PORT: ${{ secrets.SSH_PORT }}
         SSH_USER: ${{ secrets.SSH_USER }}
-
-    # パス存在確認
-    - name: Check remote path
-      run: |
-        echo "Checking if remote path exists..."
-        ssh -v $SSH_USER@$SSH_HOST -p $SSH_PORT "ls -la $REMOTE_PATH || echo 'Path does not exist, creating...'; mkdir -p $REMOTE_PATH; ls -la $REMOTE_PATH" || echo "Path check completed (exit code: $?)"
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_PORT: ${{ secrets.SSH_PORT }}
-        SSH_USER: ${{ secrets.SSH_USER }}
-        REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
 
     # 依存インストール & ビルド
     - name: Install dependencies
@@ -74,35 +102,30 @@ jobs:
         ls -la dist/
         echo "Build completed successfully"
 
-    # 小さなファイルでテスト
-    - name: Test small file transfer
+    # SSH認証が成功した場合のみ実行
+    - name: Deploy only if SSH works
       run: |
-        echo "test deployment" > test.txt
-        echo "Testing small file transfer..."
-        scp -v -P $SSH_PORT test.txt $SSH_USER@$SSH_HOST:$REMOTE_PATH/test.txt || echo "Small file test completed (exit code: $?)"
-        echo "Verifying uploaded file..."
-        ssh -v $SSH_USER@$SSH_HOST -p $SSH_PORT "cat $REMOTE_PATH/test.txt" || echo "File verification completed (exit code: $?)"
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_PORT: ${{ secrets.SSH_PORT }}
-        SSH_USER: ${{ secrets.SSH_USER }}
-        REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
-
-    # 差分転送（rsync）- 段階的テスト
-    - name: Deploy with rsync
-      run: |
-        echo "Starting deployment with rsync..."
-        echo "Source files:"
-        find dist/ -type f | head -10
-        echo "Starting rsync with verbose output..."
-        rsync -avz --verbose --dry-run \
-          -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -v" \
-          dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
-        echo "Dry run completed, now performing actual deployment..."
-        rsync -avz --verbose --stats \
-          -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -v" \
-          dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
-        echo "Deployment completed!"
+        echo "Testing SSH connection before deployment..."
+        if ssh -o ConnectTimeout=10 -o BatchMode=yes $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'SSH connection successful'" 2>/dev/null; then
+          echo "✅ SSH connection successful, proceeding with deployment..."
+          
+          echo "Checking/creating remote directory..."
+          ssh $SSH_USER@$SSH_HOST -p $SSH_PORT "mkdir -p $REMOTE_PATH && ls -la $REMOTE_PATH"
+          
+          echo "Starting rsync deployment..."
+          rsync -avz --verbose --stats --human-readable \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
+          
+          echo "✅ Deployment completed!"
+        else
+          echo "❌ SSH connection failed, skipping deployment"
+          echo "Please check:"
+          echo "1. SSH_KEY secret contains the correct private key"
+          echo "2. The corresponding public key is registered in ConoHa WING"
+          echo "3. SSH_USER, SSH_HOST, SSH_PORT are correct"
+          exit 1
+        fi
       env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_PORT: ${{ secrets.SSH_PORT }}
