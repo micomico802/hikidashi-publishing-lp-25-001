@@ -7,40 +7,93 @@ jobs:
   ssh-debug:
     runs-on: ubuntu-latest
     steps:
-    - name: SSH Debug Test
+    - name: Comprehensive SSH Debug
       run: |
+        echo "=== 1. Setting up SSH environment ==="
         mkdir -p ~/.ssh
         echo "$SSH_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         
-        echo "=== Connection Info ==="
-        echo "SSH_USER: $SSH_USER"
-        echo "SSH_HOST: $SSH_HOST" 
-        echo "SSH_PORT: $SSH_PORT"
-        echo "REMOTE_PATH: $REMOTE_PATH"
+        # SSH設定ファイル作成
+        cat > ~/.ssh/config << EOF
+        Host *
+            StrictHostKeyChecking no
+            UserKnownHostsFile /dev/null
+            LogLevel ERROR
+            IdentitiesOnly yes
+        EOF
+        chmod 600 ~/.ssh/config
         
-        echo "=== SSH Key Info ==="
-        ssh-keygen -l -f ~/.ssh/id_rsa
-        echo "Public key:"
+        echo "SSH config file:"
+        cat ~/.ssh/config
+        echo ""
+        
+        echo "=== 2. SSH Key Validation ==="
+        echo "SSH key file size: $(wc -c < ~/.ssh/id_rsa) bytes"
+        echo "SSH key line count: $(wc -l < ~/.ssh/id_rsa)"
+        echo "SSH key first line: $(head -1 ~/.ssh/id_rsa)"
+        echo "SSH key last line: $(tail -1 ~/.ssh/id_rsa)"
+        
+        if ssh-keygen -l -f ~/.ssh/id_rsa; then
+          echo "✅ SSH key format is valid"
+        else
+          echo "❌ SSH key format is invalid"
+          exit 1
+        fi
+        
+        echo "Generated public key:"
         ssh-keygen -y -f ~/.ssh/id_rsa
+        echo ""
         
-        echo "=== Testing different authentication methods ==="
+        echo "=== 3. Connection Parameters ==="
+        echo "SSH_USER: '$SSH_USER'"
+        echo "SSH_HOST: '$SSH_HOST'"
+        echo "SSH_PORT: '$SSH_PORT'"
+        echo "REMOTE_PATH: '$REMOTE_PATH'"
+        echo ""
         
-        # Test 1: Basic connection
-        echo "Test 1: Basic SSH connection test"
-        timeout 30 ssh -v -o ConnectTimeout=10 -o BatchMode=yes \
-          $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Failed with exit code: $?"
+        echo "=== 4. Network Connectivity Test ==="
+        echo "Testing port connectivity..."
+        timeout 10 nc -zv $SSH_HOST $SSH_PORT
+        echo "Port test exit code: $?"
+        echo ""
         
-        # Test 2: Different user format test (if original fails)
-        echo "Test 2: Trying without domain suffix"
-        SSH_USER_SHORT=$(echo $SSH_USER | cut -d'.' -f1)
-        echo "Trying user: $SSH_USER_SHORT"
-        timeout 30 ssh -v -o ConnectTimeout=10 -o BatchMode=yes \
-          $SSH_USER_SHORT@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Failed with exit code: $?"
+        echo "=== 5. SSH Connection Tests ==="
         
-        # Test 3: Check if server accepts connections
-        echo "Test 3: Testing if server accepts any connections"
-        timeout 10 nc -zv $SSH_HOST $SSH_PORT || echo "Port connection failed"
+        echo "Test 5.1: SSH connection with maximum verbosity"
+        timeout 30 ssh -vvv -o ConnectTimeout=10 \
+          $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Test 5.1 failed with exit code: $?"
+        echo ""
+        
+        echo "Test 5.2: SSH connection with explicit config"
+        timeout 30 ssh -F ~/.ssh/config -o ConnectTimeout=10 \
+          $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Test 5.2 failed with exit code: $?"
+        echo ""
+        
+        echo "Test 5.3: SSH connection with all options explicit"
+        timeout 30 ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+          -o ConnectTimeout=10 -o BatchMode=yes \
+          $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Test 5.3 failed with exit code: $?"
+        echo ""
+        
+        echo "Test 5.4: Different user format test"
+        SSH_USER_ALT=$(echo $SSH_USER | cut -d'.' -f1)
+        echo "Trying alternative user: '$SSH_USER_ALT'"
+        timeout 30 ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+          -o ConnectTimeout=10 -o BatchMode=yes \
+          $SSH_USER_ALT@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Test 5.4 failed with exit code: $?"
+        echo ""
+        
+        echo "=== 6. SSH Agent Test ==="
+        eval $(ssh-agent -s)
+        ssh-add ~/.ssh/id_rsa
+        ssh-add -l
+        echo ""
+        
+        echo "Test 6.1: SSH connection using agent"
+        timeout 30 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+          -o ConnectTimeout=10 \
+          $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Success with agent'" 2>&1 || echo "Test 6.1 failed with exit code: $?"
         
         echo "=== Debug completed ==="
       env:
