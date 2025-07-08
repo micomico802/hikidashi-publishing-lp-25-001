@@ -1,0 +1,51 @@
+name: SSH Debug Test
+
+on:
+  workflow_dispatch:  # 手動実行用
+
+jobs:
+  ssh-debug:
+    runs-on: ubuntu-latest
+    steps:
+    - name: SSH Debug Test
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        
+        echo "=== Connection Info ==="
+        echo "SSH_USER: $SSH_USER"
+        echo "SSH_HOST: $SSH_HOST" 
+        echo "SSH_PORT: $SSH_PORT"
+        echo "REMOTE_PATH: $REMOTE_PATH"
+        
+        echo "=== SSH Key Info ==="
+        ssh-keygen -l -f ~/.ssh/id_rsa
+        echo "Public key:"
+        ssh-keygen -y -f ~/.ssh/id_rsa
+        
+        echo "=== Testing different authentication methods ==="
+        
+        # Test 1: Basic connection
+        echo "Test 1: Basic SSH connection test"
+        timeout 30 ssh -v -o ConnectTimeout=10 -o BatchMode=yes \
+          $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Failed with exit code: $?"
+        
+        # Test 2: Different user format test (if original fails)
+        echo "Test 2: Trying without domain suffix"
+        SSH_USER_SHORT=$(echo $SSH_USER | cut -d'.' -f1)
+        echo "Trying user: $SSH_USER_SHORT"
+        timeout 30 ssh -v -o ConnectTimeout=10 -o BatchMode=yes \
+          $SSH_USER_SHORT@$SSH_HOST -p $SSH_PORT "echo 'Success'" 2>&1 || echo "Failed with exit code: $?"
+        
+        # Test 3: Check if server accepts connections
+        echo "Test 3: Testing if server accepts any connections"
+        timeout 10 nc -zv $SSH_HOST $SSH_PORT || echo "Port connection failed"
+        
+        echo "=== Debug completed ==="
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PATH: ${{ secrets.REMOTE_PATH }} 
