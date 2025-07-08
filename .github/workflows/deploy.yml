@@ -18,7 +18,7 @@ jobs:
         node-version: '18'
         cache: 'npm'
 
-    # SSH 鍵をセット（デバッグ強化）
+    # SSH 鍵をセット（詳細デバッグ）
     - name: Prepare SSH key
       run: |
         mkdir -p ~/.ssh
@@ -29,14 +29,38 @@ jobs:
         echo "  StrictHostKeyChecking no" >> ~/.ssh/config
         echo "  UserKnownHostsFile /dev/null" >> ~/.ssh/config
         echo "  Port $SSH_PORT" >> ~/.ssh/config
+        echo "  LogLevel VERBOSE" >> ~/.ssh/config
         chmod 600 ~/.ssh/config
-        # SSH接続テスト
-        ssh -T $SSH_USER@$SSH_HOST -p $SSH_PORT || echo "SSH connection test completed"
+        # SSH鍵の権限確認
+        ls -la ~/.ssh/
+        echo "SSH key setup completed"
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_PORT: ${{ secrets.SSH_PORT }}
+
+    # SSH接続の詳細テスト
+    - name: Test SSH connection
+      run: |
+        echo "Testing SSH connection with verbose output..."
+        ssh -v -T $SSH_USER@$SSH_HOST -p $SSH_PORT -o ConnectTimeout=10 || echo "SSH test completed (exit code: $?)"
+        echo "Testing basic SSH command..."
+        ssh -v $SSH_USER@$SSH_HOST -p $SSH_PORT "echo 'Hello from server'; pwd; whoami" || echo "SSH command test completed (exit code: $?)"
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
         SSH_USER: ${{ secrets.SSH_USER }}
+
+    # パス存在確認
+    - name: Check remote path
+      run: |
+        echo "Checking if remote path exists..."
+        ssh -v $SSH_USER@$SSH_HOST -p $SSH_PORT "ls -la $REMOTE_PATH || echo 'Path does not exist, creating...'; mkdir -p $REMOTE_PATH; ls -la $REMOTE_PATH" || echo "Path check completed (exit code: $?)"
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
 
     # 依存インストール & ビルド
     - name: Install dependencies
@@ -50,12 +74,33 @@ jobs:
         ls -la dist/
         echo "Build completed successfully"
 
-    # 差分転送（rsync）- エラーハンドリング強化
+    # 小さなファイルでテスト
+    - name: Test small file transfer
+      run: |
+        echo "test deployment" > test.txt
+        echo "Testing small file transfer..."
+        scp -v -P $SSH_PORT test.txt $SSH_USER@$SSH_HOST:$REMOTE_PATH/test.txt || echo "Small file test completed (exit code: $?)"
+        echo "Verifying uploaded file..."
+        ssh -v $SSH_USER@$SSH_HOST -p $SSH_PORT "cat $REMOTE_PATH/test.txt" || echo "File verification completed (exit code: $?)"
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+        REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+
+    # 差分転送（rsync）- 段階的テスト
     - name: Deploy with rsync
       run: |
-        echo "Starting deployment..."
-        rsync -avz --delete --stats \
-          -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+        echo "Starting deployment with rsync..."
+        echo "Source files:"
+        find dist/ -type f | head -10
+        echo "Starting rsync with verbose output..."
+        rsync -avz --verbose --dry-run \
+          -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -v" \
+          dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
+        echo "Dry run completed, now performing actual deployment..."
+        rsync -avz --verbose --stats \
+          -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -v" \
           dist/ $SSH_USER@$SSH_HOST:$REMOTE_PATH
         echo "Deployment completed!"
       env:
