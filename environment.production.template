@@ -1,0 +1,20 @@
+# Production Environment Variables Template
+# このファイルを .env.production としてコピーして、実際の値を設定してください
+
+# Gemini AI API Key for production
+GEMINI_API_KEY=your_production_gemini_api_key_here
+
+# Base URL for API endpoints (if needed)
+# VITE_API_BASE_URL=https://api.yourdomain.com
+
+# Application Environment
+NODE_ENV=production
+
+# Build Configuration
+VITE_APP_TITLE=Hikidashi Publishing
+VITE_APP_DESCRIPTION=A landing page for Hikidashi Publishing
+
+# セットアップ手順：
+# 1. このファイルを .env.production にコピー
+# 2. GEMINI_API_KEY に実際のAPIキーを設定
+# 3. その他必要に応じて値を調整 
