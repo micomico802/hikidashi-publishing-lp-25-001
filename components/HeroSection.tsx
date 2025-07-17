@@ -24,7 +24,7 @@ const HeroSection: React.FC = () => {
         <p className="text-xl sm:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-md">
           書く手間なし！<HighlightText className="text-secondary-light">428時間</HighlightText>を"生み出す"秘策、教えます。
         </p>
-        <CallToActionButton text="無料目次作成セッションに申し込む" className="text-xl px-10 py-4 shadow-xl" />
+        <CallToActionButton text="無料目次作成セッションに申し込む" href="https://forms.gle/asaXZkD25iFwtkaG7" className="text-xl px-10 py-4 shadow-xl" />
       </div>
     </section>
   );

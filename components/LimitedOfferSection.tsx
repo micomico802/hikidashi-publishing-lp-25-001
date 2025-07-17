@@ -27,7 +27,7 @@ const LimitedOfferSection: React.FC = () => {
             <HighlightText className="text-5xl block my-2">【残り3枠】</HighlightText>
             です。
           </p>
-          <CallToActionButton text="今すぐ無料セッションに申し込む" className="text-xl px-10 py-4" />
+          <CallToActionButton text="今すぐ無料セッションに申し込む" href="https://forms.gle/asaXZkD25iFwtkaG7" className="text-xl px-10 py-4" />
           <p className="mt-6 text-neutral-DEFAULT">まずはお気軽にご相談ください！</p>
         </div>
       </div>
