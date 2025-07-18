@@ -11,9 +11,10 @@ interface PlanProps {
   features: string[];
   isFeatured?: boolean;
   imageSrc: string;
+  href?: string;
 }
 
-const PlanCard: React.FC<PlanProps> = ({ name, price, description, features, isFeatured = false, imageSrc }) => (
+const PlanCard: React.FC<PlanProps> = ({ name, price, description, features, isFeatured = false, imageSrc, href }) => (
   <div className={`rounded-xl shadow-xl p-8 flex flex-col ${isFeatured ? 'bg-primary-dark text-white transform scale-105' : 'bg-white text-neutral-dark'}`}>
     <img src={imageSrc} alt={name} className="w-full h-48 object-cover rounded-md mb-6" />
     <h3 className={`text-2xl font-bold mb-2 text-center ${isFeatured ? 'text-secondary-light' : 'text-primary-dark'}`}>{name}</h3>
@@ -31,6 +32,7 @@ const PlanCard: React.FC<PlanProps> = ({ name, price, description, features, isF
     </ul>
     <CallToActionButton 
         text="プランを選択" 
+        href={href}
         className={isFeatured ? 'bg-secondary hover:bg-secondary-dark w-full' : 'bg-primary hover:bg-primary-dark text-white w-full'} />
   </div>
 );
@@ -42,7 +44,8 @@ const PricingSection: React.FC = () => {
       price: "12万8000円", 
       description: "手軽に始めたい方向けのプラン", 
       features: ["基本的なインタビュー", "AIによる原稿作成補助", "簡易表紙デザイン"],
-      imageSrc: "https://picsum.photos/seed/plan1/400/250"
+      imageSrc: "https://picsum.photos/seed/plan1/400/250",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLSeY8WvQ-Y1nA7B-3-UuopqxZHH4Il2HoYJcCgdv-PkmtFGzHg/viewform?usp=pp_url&entry.588393791=%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%83%97%E3%83%A9%E3%83%B3"
     },
     { 
       name: "ハイスペックプラン", 
@@ -50,14 +53,16 @@ const PricingSection: React.FC = () => {
       description: "私たちの基準となるプランです", 
       features: ["詳細インタビュー", "プロライターによる編集", "高品質表紙デザイン", "約6万文字のボリューム"],
       isFeatured: true,
-      imageSrc: "https://picsum.photos/seed/plan2/400/250"
+      imageSrc: "https://picsum.photos/seed/plan2/400/250",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLSeY8WvQ-Y1nA7B-3-UuopqxZHH4Il2HoYJcCgdv-PkmtFGzHg/viewform?usp=pp_url&entry.588393791=%E3%83%8F%E3%82%A4%E3%82%B9%E3%83%9A%E3%83%83%E3%82%AF%E3%83%97%E3%83%A9%E3%83%B3"
     },
     { 
       name: "ハイスペSNSプラン", 
       price: "54万8000円", 
       description: "出版後のSNS展開までサポート", 
       features: ["ハイスペックプラン全内容", "100日分SNS投稿コンテンツ作成", "コミュニティ優先参加権"],
-      imageSrc: "https://picsum.photos/seed/plan3/400/250"
+      imageSrc: "https://picsum.photos/seed/plan3/400/250",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLSeY8WvQ-Y1nA7B-3-UuopqxZHH4Il2HoYJcCgdv-PkmtFGzHg/viewform?usp=pp_url&entry.588393791=%E3%83%8F%E3%82%A4%E3%82%B9%E3%83%9ASNS%E3%83%97%E3%83%A9%E3%83%B3"
     }
   ];
 
