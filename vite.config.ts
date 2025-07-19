@@ -6,5 +6,16 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, '.'),
     }
+  },
+  css: {
+    postcss: './postcss.config.js',
+  },
+  optimizeDeps: {
+    include: ['tailwindcss'],
+  },
+  server: {
+    hmr: {
+      overlay: false
+    }
   }
 });
