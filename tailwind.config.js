@@ -2,12 +2,18 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./**/*.{js,ts,jsx,tsx}"
+    "./contexts/**/*.{js,ts,jsx,tsx}",
+    "./utils/**/*.{js,ts,jsx,tsx}",
+    "./types/**/*.{js,ts,jsx,tsx}",
+    "./*.{js,ts,jsx,tsx}",
+    "./App.tsx"
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        'video': '16 / 9',
+      },
       colors: {
         'primary': {
           light: '#60a5fa', // blue-400
@@ -30,5 +36,7 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 } 
