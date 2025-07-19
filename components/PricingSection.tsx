@@ -16,12 +16,17 @@ interface PlanProps {
 }
 
 const PlanCard: React.FC<PlanProps> = ({ name, price, description, features, isFeatured = false, imageSrc, href }) => (
-  <div className={`rounded-xl shadow-xl p-8 flex flex-col ${isFeatured ? 'bg-primary-dark text-white transform scale-105' : 'bg-white text-neutral-dark'}`}>
+  <div className={`rounded-xl p-8 flex flex-col relative min-h-[600px] ${isFeatured ? 'bg-primary-dark text-white shadow-2xl border-4 border-secondary' : 'bg-white text-neutral-dark shadow-xl'}`}>
+    {isFeatured && (
+      <div className="absolute -top-4 left-4 bg-secondary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+        おすすめ
+      </div>
+    )}
     <div className="aspect-[16/9] bg-neutral-light rounded-md mb-6">
       <img src={imageSrc} alt={name} className="w-full h-full object-contain" />
     </div>
-    <h3 className={`text-xl sm:text-2xl font-bold mb-2 text-center ${isFeatured ? 'text-secondary-light' : 'text-primary-dark'}`}>{name}</h3>
-    <p className={`text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-4 ${isFeatured ? 'text-white' : 'text-neutral-dark'}`}>{price}</p>
+    <h3 className={`text-lg sm:text-xl md:text-2xl font-bold mb-2 text-center break-words ${isFeatured ? 'text-secondary-light' : 'text-primary-dark'}`}>{name}</h3>
+    <p className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-4 break-words ${isFeatured ? 'text-white' : 'text-neutral-dark'}`}>{price}</p>
     <p className={`text-sm text-center mb-6 ${isFeatured ? 'text-gray-300' : 'text-neutral-DEFAULT'}`}>{description}</p>
     <ul className="space-y-3 mb-8 flex-grow">
       {features.map((feature, index) => (
@@ -33,10 +38,12 @@ const PlanCard: React.FC<PlanProps> = ({ name, price, description, features, isF
         </li>
       ))}
     </ul>
-    <CallToActionButton 
-        text="プランを選択" 
-        href={href}
-        className={isFeatured ? 'bg-secondary hover:bg-secondary-dark w-full text-sm sm:text-base' : 'bg-primary hover:bg-primary-dark text-white w-full text-sm sm:text-base'} />
+    <div className="mt-auto">
+      <CallToActionButton 
+          text="プランを選択" 
+          href={href}
+          className={`${isFeatured ? 'bg-secondary hover:bg-secondary-dark' : 'bg-primary hover:bg-primary-dark text-white'} !w-full h-12 flex items-center justify-center mx-0`} />
+    </div>
   </div>
 );
 
@@ -70,18 +77,22 @@ const PricingSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section id="pricing" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【私たちの価格に込めた想いと、あなたが手にする“価格以上の価値”】" />
-        <p className="max-w-3xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
+        <SectionTitle>
+          【私たちの価格に込めた想いと、あなたが手にする"価格以上の価値"】
+        </SectionTitle>
+        <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           まず、hikidashi出版の各プランの価格をご覧ください。この価格をご覧になって、あなたはどのように感じられたでしょうか？ ここでは、私たちがこの価格設定に至った背景と、そこに込めた熱い想い、そして何よりもあなたがこの投資によって手にするであろう、計り知れない価値について、正直にお話しさせてください。
         </p>
         
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-16 items-stretch">
-          {plans.map(plan => <PlanCard key={plan.name} {...plan} />)}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+            {plans.map(plan => <PlanCard key={plan.name} {...plan} />)}
+          </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8 text-lg text-neutral-dark leading-relaxed">
+        <div className="max-w-6xl mx-auto space-y-8 text-lg text-neutral-dark leading-relaxed">
           <div className="bg-neutral-light p-8 rounded-xl shadow-lg">
             <h3 className="text-2xl font-bold text-primary-dark mb-4">なぜ、この価格なのか？私たちの「覚悟」と「こだわり」</h3>
             <p>私たちの基準となる「ハイスペックプラン（34万8000円）」 の内訳を包み隠さずお伝えすると、最新AIシステムを最適な状態で稼働させるための費用、プロのインタビュアーやあなたの書籍を彩るデザイナーへの適正な報酬、そして出版後もあなたをサポートするコミュニティ運営や各種サポートのための人件費が、その大部分を占めています。</p>

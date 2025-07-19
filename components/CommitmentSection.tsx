@@ -19,7 +19,7 @@ const PledgeCard: React.FC<CommitmentPledgeProps> = ({ title, description, icon,
         <div className="p-6 md:p-8">
             <div className="flex items-center mb-4 text-secondary">
                 {icon}
-                <h3 className="text-xl font-bold text-primary-dark ml-3">{title}</h3>
+                <h3 className="text-xl font-bold text-primary-dark ml-3 break-words word-break-keep-all">{title}</h3>
             </div>
             <div className="text-neutral-dark leading-relaxed">{description}</div>
         </div>
@@ -75,22 +75,26 @@ const CommitmentSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【あなたの挑戦を、私たちは決して無駄にはさせません！hikidashi出版だけの「安心コミットメント」】" />
-        <p className="max-w-3xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
+        <SectionTitle>
+          【あなたの挑戦を、私たちは決して無駄にはさせません！hikidashi出版だけの「安心コミットメント」】
+        </SectionTitle>
+        <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           新しいことに一歩踏み出すとき、期待と同時に不安がよぎるのは当然のことです。 「本当に私でも質の高い本が作れるのだろうか？」 「もし、思ったような成果が出なかったら…？」 そんなあなたの不安な気持ちに、私たちhikidashi出版は真正面から向き合い、安心して最初の一歩を踏み出していただけるよう、独自の「安心コミットメント」をご用意しました。
         </p>
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-          {commitments.map((commitment, index) => (
-            <PledgeCard 
-              key={index} 
-              title={commitment.title} 
-              description={commitment.description} 
-              icon={commitment.icon}
-              imageSrc={commitment.imageSrc}
-            />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+            {commitments.map((commitment, index) => (
+              <PledgeCard 
+                key={index} 
+                title={commitment.title} 
+                description={commitment.description} 
+                icon={commitment.icon}
+                imageSrc={commitment.imageSrc}
+              />
+            ))}
+          </div>
         </div>
-        <div className="mt-16 text-center max-w-3xl mx-auto">
+        <div className="mt-16 text-center max-w-6xl mx-auto">
             <p className="text-xl font-semibold text-neutral-dark leading-relaxed">私たちは、あなたの勇気ある一歩を、そしてその先に広がる素晴らしい可能性を、心から信じています。 だからこそ、あなたが安心して、そしてワクワクしながらこの挑戦に臨めるよう、全力でサポートすることをお約束します。</p>
         </div>
       </div>

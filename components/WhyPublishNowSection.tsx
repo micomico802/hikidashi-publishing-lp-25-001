@@ -21,7 +21,7 @@ const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, image
     <div className="p-6 md:p-8 flex-1">
       <div className="flex items-center mb-3">
         {icon && <span className="mr-3 text-secondary">{icon}</span>}
-        <h3 className="text-xl font-bold text-primary-dark">{title}</h3>
+        <h3 className="text-xl font-bold text-primary-dark break-words word-break-keep-all">{title}</h3>
       </div>
       <p className="text-neutral-dark leading-relaxed">{description}</p>
     </div>
@@ -70,15 +70,15 @@ const WhyPublishNowSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【あなたの「声」を、なぜ今こそカタチにすべきなのか？】" />
-        <div className="max-w-4xl mx-auto text-lg text-neutral-dark leading-relaxed space-y-6 mb-12">
+        <SectionTitle>【あなたの「声」を、なぜ今こそカタチにすべきなのか？】</SectionTitle>
+        <div className="max-w-6xl mx-auto text-lg text-neutral-dark leading-relaxed space-y-6 mb-12">
           <p>私たちは、これまで本当に多くの素晴らしい方々に出会い、その輝かしい経験や深い洞察に触れてきました。 あなたのように、他の誰かの人生を豊かにするような、唯一無二の物語や知識、そして熱い想をお持ちの方々です。</p>
           <p>しかし同時に、その貴重な「声」の多くが、日々の忙しさの中で十分に語られることなく、あるいは「私なんかが…」という謙遜の中で、まるでダイヤモンドの原石のように埋もれてしまっている現実も目の当たりにしてきました。</p>
           <p>私たちは、それがたまらなく<HighlightText>「もったいない」</HighlightText>と感じたのです。 「この方のユニークな価値観や経験がもっと世に広まれば、どれだけ多くの人が勇気づけられ、救われ、そして幸せになれるだろうか…」 そんな強い想いが、この「hikidashi出版」を立ち上げる原動力となりました。あなたの内なる「一部」には、誰かの「全て」を変えるほどの力が秘められていると、私たちは信じています。</p>
           <p className="font-semibold text-xl text-primary-dark">そして、なぜ「今」なのでしょうか？ それは、かつてないほどのチャンスが、あなたの目の前に広がっているからです。</p>
         </div>
         
-        <div className="space-y-10">
+        <div className="max-w-6xl mx-auto space-y-8">
           {reasons.map((reason, index) => (
             <ReasonCard 
               key={index} 
@@ -90,17 +90,19 @@ const WhyPublishNowSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center max-w-3xl mx-auto">
+        <div className="mt-16 text-center max-w-6xl mx-auto">
           <p className="text-xl font-semibold text-primary-dark leading-relaxed">
-            だからこそ、私たちはあなたに心から伝えたい。
+            だからこそ、私たちはあなたに心からお伝えしたいのです。
           </p>
-          <p className="text-2xl md:text-3xl font-bold text-secondary-dark my-4">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary-dark my-4 break-words word-break-keep-all">
+            「今こそ、その想いをカタチにする絶好のタイミングです！」
+          </p>
+          <p className="text-lg text-neutral-dark leading-relaxed">
             あなたのその素晴らしい経験と、胸に秘めた熱い想いを、今こそ「本」というカタチにして、世界へ解き放ちませんか？
           </p>
-          <p className="text-xl text-neutral-dark">
-            眠らせておくには、あまりにももったいないのですから。
-          </p>
-          <img src={getImage('futureVision')} alt="世界へ発信するイメージ" className="mt-8 mx-auto rounded-lg shadow-lg" />
+          <div className="max-w-6xl mx-auto">
+              <img src={getImage('futureVision')} alt="世界へ発信するイメージ" className="mt-8 mx-auto rounded-lg shadow-lg max-w-full h-auto" />
+          </div>
         </div>
       </div>
     </section>

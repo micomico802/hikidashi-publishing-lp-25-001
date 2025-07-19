@@ -9,10 +9,10 @@ const FinalCallToActionSection: React.FC = () => {
   return (
     <section className="py-20 md:py-32 bg-gradient-to-br from-primary via-primary-dark to-black text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-secondary-light">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-secondary-light break-words word-break-keep-all">
           【追伸：あなたの物語が始まるのを、私たちは待っています。】
         </h2>
-        <div className="max-w-3xl mx-auto space-y-6 text-lg leading-relaxed mb-12">
+        <div className="max-w-6xl mx-auto space-y-6 text-lg leading-relaxed mb-12">
           <p>
             P.S. ここまで読んでくださったあなたは、きっと心の中に「伝えたい何か」を強く持っているはずです。 そして、もしかしたら「でも、私に本当に書けるのかな…」というほんの少しの不安も、まだ残っているかもしれません。
           </p>
@@ -29,7 +29,7 @@ const FinalCallToActionSection: React.FC = () => {
             でも、忘れないでください。私たちが生きるこの「時間」だけは、誰にも平等で、そして決して巻き戻すことはできません。 あなたが「いつかやろう」と思っているその「いつか」は、もしかしたら永遠に来ないかもしれないのです。 あなたのその素晴らしいアイデアや、胸に秘めた情熱をカタチにする最高のタイミングは、他の誰でもない、あなた自身が「今だ！」と決めた、まさにこの瞬間なのかもしれません。
           </p>
           <p className="font-semibold">
-            そして、私たちのサポートにも限りがあります。（今月の残り枠も、あなたの決断を待たずに刻一刻と減っています…！） この特別なチャンスを、本当に逃してしまってもいいのですか？
+            そして、私たちのサポートにも限りがあります。（今月の残り枠も、あなたの決断を待らずに刻一刻と減っています…！） この特別なチャンスを、本当に逃してしまってもいいのですか？
           </p>
           <p className="text-xl font-bold">
             一歩踏み出す勇気。 それさえあれば、あとは私たちに任せてください。
@@ -38,16 +38,19 @@ const FinalCallToActionSection: React.FC = () => {
             あなたの物語が、誰かの心を動かし、そしてあなた自身の未来を大きく変える瞬間を、私たちはすぐそばで、全力でサポートします。
           </p>
         </div>
-        <img src={getImage('finalCta')} alt="未来への扉" className="my-10 mx-auto rounded-lg shadow-xl"/>
-        <p className="text-2xl sm:text-3xl font-bold mb-8">
+        <div className="max-w-6xl mx-auto">
+            <img src={getImage('finalCta')} alt="未来への扉" className="my-10 mx-auto rounded-lg shadow-xl max-w-full h-auto"/>
+        </div>
+        <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 break-words word-break-keep-all">
           さあ、次はあなたの番です。<br />
           まずは、あなたの想いを私たちに聞かせてください。
         </p>
         <CallToActionButton 
-          text="無料「目次作成セッション」で最初のページをめくる" 
           href="https://forms.gle/asaXZkD25iFwtkaG7"
-          className="text-sm sm:text-base md:text-lg lg:text-xl px-4 sm:px-6 md:px-10 py-4 sm:py-5 max-w-sm sm:max-w-md md:max-w-none mx-auto" 
-        />
+        >
+          無料「目次作成セッション」で<br />
+          最初のページをめくる
+        </CallToActionButton>
         <p className="mt-6 text-gray-300">お会いできる日を、心から楽しみにしています！</p>
       </div>
     </section>

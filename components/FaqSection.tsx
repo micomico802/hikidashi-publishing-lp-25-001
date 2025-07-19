@@ -118,10 +118,12 @@ const faqData = {
 
 const FaqSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-neutral-light">
+    <section id="faq" className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【電子書籍出版でよくあるギモン、スッキリ解決タイム！】" />
-        <div className="max-w-3xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-xl">
+        <SectionTitle>
+          【電子書籍出版でよくあるギモン、スッキリ解決タイム！】
+        </SectionTitle>
+        <div className="max-w-6xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-xl">
           {Object.entries(faqData).map(([category, items]) => (
             <div key={category} className="mb-10">
               <h3 className="text-2xl font-bold text-secondary-dark mb-6 border-l-4 border-secondary-dark pl-4">{category}</h3>

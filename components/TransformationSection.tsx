@@ -21,7 +21,11 @@ const BenefitCard: React.FC<BenefitProps> = ({ title, description, icon }) => (
 const VoiceIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a.75.75 0 0 0 .75-.75V6.038a.75.75 0 0 0-.75-.75S11.25 5.25 11.25 6v12a.75.75 0 0 0 .75.75Zm-3.75-2.625a.75.75 0 0 0-.75.75v.038a.75.75 0 0 0 .75.75S8.25 18 8.25 17.25v-5.504a.75.75 0 0 0-.75-.75S6.75 11 6.75 11.75v5.503a.75.75 0 0 0 .75.75S8.25 18 8.25 17.25v-5.503M15.75 16.125a.75.75 0 0 0 .75-.75V9.038a.75.75 0 0 0-.75-.75S15 8.25 15 9v6.375a.75.75 0 0 0 .75.75S15.75 16.125 15.75 16.125Z" /></svg>;
 const ChosenIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.822.672l-4.684-2.492a.563.563 0 0 0-.652 0l-4.684 2.492a.562.562 0 0 1-.822-.672l1.285-5.385a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>;
 const StageIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" /></svg>;
-const CommunityGrowthIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.243-3.72a9.094 9.094 0 0 1-.479 3.741M18 18.72v-2.28a2.25 2.25 0 0 0-.659-1.591l-4.682-4.682a2.25 2.25 0 0 0-1.591-.659H10.5M18 18.72H5.28c-.168 0-.336.032-.5.094A9.095 9.095 0 0 0 1 18.72M5.28 18.72H18m-3.97-10.339a2.25 2.25 0 0 0-3.182-3.182m3.182 3.182L12 12.72m3.182-3.182A2.25 2.25 0 0 0 12.01 6.31M6.311 12.01a2.25 2.25 0 0 0 3.182 3.182m-3.182-3.182L12 11.28m-3.182 3.182A2.25 2.25 0 0 0 11.99 17.69" /></svg>;
+const CommunityGrowthIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+  </svg>
+);
 
 
 const TransformationSection: React.FC = () => {
@@ -53,32 +57,34 @@ const TransformationSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【hikidashi出版で、あなたはどんな「新しい自分」と出会いますか？】" />
-        <p className="max-w-3xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
+        <SectionTitle>
+          【hikidashi出版で、あなたはどんな「新しい自分」と出会いますか？】
+        </SectionTitle>
+        <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           hikidashi出版のサービスをご利用いただくことで、あなたは単に「一冊の本が完成する」という結果だけを手にするのではありません。それは、あなたの人生とビジネスに、想像を超えるような素晴らしい変化をもたらす、まさに<HighlightText>「革命の始まり」</HighlightText>なのです。
         </p>
-        <p className="max-w-3xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-16">
+        <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-16">
           具体的に、あなたはどのような未来を手にすることができるのでしょうか？
         </p>
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-          {benefits.map((benefit, index) => (
-            <BenefitCard 
-              key={index} 
-              title={benefit.title} 
-              description={benefit.description} 
-              icon={benefit.icon} 
-            />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+            {benefits.map((benefit, index) => (
+              <BenefitCard 
+                key={index} 
+                title={benefit.title} 
+                description={benefit.description} 
+                icon={benefit.icon} 
+              />
+            ))}
+          </div>
         </div>
-        <div className="mt-16 text-center">
-            <img src={getImage('transformation')} alt="新しい自分との出会い" className="mx-auto rounded-lg shadow-xl max-w-full h-auto w-full sm:w-4/5 md:w-3/5 lg:w-1/2" />
-            <p className="mt-8 text-xl font-semibold text-neutral-dark leading-relaxed">これらは、決して遠い夢物語ではありません。 実際に多くの方が体験している、書籍出版がもたらすほんの一部の変化です。</p>
-            <p className="text-2xl font-bold text-secondary-dark mt-4">
-                hikidashi出版は、あなたのその輝かしい未来への、最も確実で、最もエキサイティングな一歩となることをお約束します。
-            </p>
-            <p className="text-xl font-semibold text-primary-dark mt-8">
-                さあ、次はあなたが、この素晴らしい変化を体験する番です。
-            </p>
+        <div className="mt-16 text-center max-w-6xl mx-auto">
+          <img src={getImage('transformation')} alt="新しい自分との出会い" className="mx-auto rounded-lg shadow-xl max-w-full h-auto" />
+          <p className="mt-8 text-xl font-semibold text-neutral-dark leading-relaxed">これらは、決して遠い夢物語ではありません。 実際に多くの方が体験している、書籍出版がもたらすほんの一部の変化です。</p>
+          <p className="text-xl font-semibold text-neutral-dark mt-4 leading-relaxed">多くの方が、書籍出版というプロセスを通じて新たな自分と出会い、自信を深め、そして次なるステージへと力強く踏み出しています。</p>
+          <p className="text-xl font-semibold text-primary-dark mt-8">
+              さあ、次はあなたが、この素晴らしい変化を体験する番です。
+          </p>
         </div>
       </div>
     </section>

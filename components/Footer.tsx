@@ -10,8 +10,6 @@ const Footer: React.FC = () => {
           <ul className="flex justify-center space-x-6">
             <li><a href="#pricing" className="hover:text-secondary-light transition-colors">料金プラン</a></li>
             <li><a href="#faq" className="hover:text-secondary-light transition-colors">よくある質問</a></li>
-            <li><a href="#contact" className="hover:text-secondary-light transition-colors">お問い合わせ</a></li> 
-            {/* Replace #contact with actual link or remove if not applicable */}
           </ul>
         </nav>
         <p className="text-sm text-neutral-DEFAULT">

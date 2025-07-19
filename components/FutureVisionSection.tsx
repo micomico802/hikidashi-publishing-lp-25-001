@@ -11,13 +11,15 @@ interface FutureScenarioProps {
 }
 
 const FutureScenarioCard: React.FC<FutureScenarioProps> = ({ text, icon, imageSrc }) => (
-  <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col">
+  <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full min-h-[500px]">
     <div className="aspect-[16/9] bg-neutral-light rounded-t-xl overflow-hidden">
       <img src={imageSrc} alt="輝かしい未来" className="w-full h-full object-contain"/>
     </div>
-    <div className="p-6 flex-grow flex flex-col justify-center items-center text-center">
-      <div className="text-secondary mb-4">{icon}</div>
-      <p className="text-neutral-dark leading-relaxed text-lg">{text}</p>
+    <div className="p-6 flex-grow flex flex-col text-center">
+      <div className="h-16 flex items-center justify-center text-secondary mb-4 flex-shrink-0">{icon}</div>
+      <div className="flex-grow">
+        <p className="text-neutral-dark leading-relaxed text-lg">{text}</p>
+      </div>
     </div>
   </div>
 );
@@ -26,9 +28,21 @@ const FutureScenarioCard: React.FC<FutureScenarioProps> = ({ text, icon, imageSr
 const HeartIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>;
 const SmileIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75s.168-.75.375-.75S9.75 9.336 9.75 9.75Zm4.5 0c0 .414-.168.75-.375.75S13.5 10.164 13.5 9.75s.168-.75.375-.75S14.25 9.336 14.25 9.75Z" /></svg>;
 const GlobeIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A11.978 11.978 0 0 1 12 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686-5.836A8.959 8.959 0 0 0 3 12c0 .778.099 1.533.284 2.253m0 0A11.978 11.978 0 0 0 12 16.5c2.998 0 5.74 1.1 7.843-2.918M3.986 8.253 5.864 6.375" /></svg>;
-const NewWorldIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h12M3.75 3h-1.5m1.5 0h16.5M3.75 12H12m0 0V9.75M12 12v4.5m0-4.5H6.375m5.625-4.5H6.375m8.25 4.5h3.375m0 0V9.75m0 2.25v3.375M18.75 9.75h-2.25m2.25 0h1.5M16.5 3.75h.75m1.5 14.25L18 16.5m-1.5 1.5L15 16.5m3 1.5V12m-3 0V7.5M9 3.75h2.25M9 7.5h2.25M9 12h2.25m-2.25 4.5h2.25M3 3.75h.75M3 7.5h.75M3 12h.75m-.75 4.5h.75m9-15v15" /></svg>;
-const RocketIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.82m5.84-2.56a12.028 12.028 0 0 0-5.84 7.38M21.75 12.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>; // Simplified rocket
-const NewYouIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75s.168-.75.375-.75S9.75 9.336 9.75 9.75Zm4.5 0c0 .414-.168.75-.375.75S13.5 10.164 13.5 9.75s.168-.75.375-.75S14.25 9.336 14.25 9.75Z" /></svg>;
+const NewWorldIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H9" />
+  </svg>
+);
+const RocketIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+  </svg>
+);
+const NewYouIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+  </svg>
+);
 
 
 const FutureVisionSection: React.FC = () => {
@@ -44,21 +58,29 @@ const FutureVisionSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【次はあなたの番！書籍出版が拓く、輝かしい未来の一例】" />
-        <p className="max-w-3xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
+        <SectionTitle>
+          【次はあなたの番！書籍出版が拓く、輝かしい未来の一例】
+        </SectionTitle>
+        <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           hikidashi出版であなたの本が完成したとき、それは単なる「一冊の本」ではありません。 あなたの未来を、今よりもっと豊かで、もっとエキサイティングなものへと塗り替える、魔法のチケットを手にしたようなものなのです。 想像してみてください…こんな未来が、あなたを待っているかもしれません。
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {scenarios.map((scenario, index) => (
-            <FutureScenarioCard key={index} text={scenario.text} icon={scenario.icon} imageSrc={scenario.imageSrc} />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            {scenarios.map((scenario, index) => (
+              <FutureScenarioCard key={index} text={scenario.text} icon={scenario.icon} imageSrc={scenario.imageSrc} />
+            ))}
+          </div>
         </div>
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center max-w-6xl mx-auto">
           <p className="text-xl font-semibold text-neutral-dark leading-relaxed">これらは、けっして手の届かない夢物語ではありません。 実際に多くの方が、書籍出版を通じてこのような素晴らしい変化を、そして想像以上の未来を手にしています。</p>
-          <p className="text-2xl md:text-3xl font-bold text-secondary-dark my-6">
+          <p className="text-xl font-semibold text-neutral-dark leading-relaxed mt-4">hikidashi出版は、あなたのその輝かしい未来への、最も確実で、最もエキサイティングな一歩となることをお約束します。</p>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary-dark my-6 break-words word-break-keep-all">
             次は、あなたがその輝かしい物語の主人公になる番です。
           </p>
-          <CallToActionButton text="未来への第一歩を踏み出す" href="https://forms.gle/asaXZkD25iFwtkaG7" className="text-base sm:text-lg lg:text-xl max-w-xs sm:max-w-none mx-auto" />
+          <CallToActionButton 
+            text="未来への第一歩を踏み出す" 
+            href="https://forms.gle/asaXZkD25iFwtkaG7" 
+          />
         </div>
       </div>
     </section>

@@ -23,16 +23,21 @@ const ProblemSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【このようなことでお悩みではありませんか？】" />
-        <div className="max-w-3xl mx-auto space-y-6">
+        <SectionTitle>【このようなことでお悩みではありませんか？】</SectionTitle>
+        <div className="max-w-6xl mx-auto">
           {problems.map((problem, index) => (
-            <div key={index} className="flex items-start p-4 bg-neutral-light rounded-lg shadow">
+            <div 
+              key={index} 
+              className="flex items-start p-4 bg-neutral-light rounded-lg shadow mx-auto max-w-6xl"
+            >
               <CheckIcon className="mr-3 mt-1 flex-shrink-0" />
-              <p className="text-neutral-dark text-lg">{problem}</p>
+              <p className="text-neutral-dark text-lg">
+                {problem}
+              </p>
             </div>
           ))}
-          <div className="mt-12 text-center">
-              <img src={getImage('problem')} alt="悩みを抱える人のイメージ" className="my-6 rounded-lg shadow-md mx-auto max-w-full h-auto w-full sm:w-4/5 md:w-3/5 lg:w-1/2"/>
+          <div className="mt-12 text-center max-w-6xl mx-auto">
+              <img src={getImage('problem')} alt="悩みを抱える人のイメージ" className="my-6 rounded-lg shadow-md mx-auto max-w-full h-auto"/>
           </div>
         </div>
       </div>

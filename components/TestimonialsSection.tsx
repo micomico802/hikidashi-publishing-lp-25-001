@@ -68,18 +68,22 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【喜びの声、続々！実際にhikidashi出版を体験された方々のリアルな感想】" />
-        <p className="max-w-3xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
+        <SectionTitle>
+          【喜びの声、続々！実際にhikidashi出版を体験された方々のリアルな感想】
+        </SectionTitle>
+        <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
         「本当に話すだけで本になるの？」「どんな体験ができるの？」 そんなあなたの疑問や期待に、実際にhikidashi出版で書籍を完成された先輩たちが、感動の声で応えてくれます。 ここでは、そのほんの一部をご紹介します。
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={index} {...testimonial} />
+            ))}
+          </div>
         </div>
-        <div className="mt-16 text-center">
-            <p className="text-lg text-neutral-dark leading-relaxed">いかがでしたでしょうか？ これらは、hikidashi出版を通じて、ご自身の想いをカタチにされた方々の、ほんの一部の声です。 多くの方が、書籍出版というプロセスを通じて新たな自分と出会い、自信を深め、そして次なるステージへと力強く踏み出しています。</p>
-            <p className="text-2xl font-bold text-secondary-dark mt-6">
+        <div className="mt-16 text-center max-w-6xl mx-auto">
+            <p className="text-lg text-neutral-dark leading-relaxed">いかがでしたでしょうか？ これらは、hikidashi出版を通じて、ご自身の想いをカタチにされた方々の、ほんの一部の声です。 このような喜びと感動を、あなたにも体験していただきたいと心から願っています。</p>
+            <p className="text-xl sm:text-2xl font-bold text-secondary-dark mt-6 break-words word-break-keep-all">
                 次は、あなたがこの感動と喜びを体験する番です。
             </p>
         </div>

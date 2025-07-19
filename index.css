@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+/* スムーズスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
 /* 日本語フォント設定 */
 body {
   font-family: 'Noto Sans JP', sans-serif;

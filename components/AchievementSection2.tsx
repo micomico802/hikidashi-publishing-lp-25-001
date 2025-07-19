@@ -15,7 +15,7 @@ const AchievementItem: React.FC<AchievementItemProps> = ({ title, description, i
     <div className="aspect-[16/9] bg-neutral-light rounded-md mb-4">
       <img src={imageSrc} alt={title} className="w-full h-full object-contain"/>
     </div>
-    <h3 className="text-xl font-semibold text-primary-dark mb-2">{title}</h3>
+    <h3 className="text-xl font-semibold text-primary-dark mb-2 break-words word-break-keep-all">{title}</h3>
     <p className="text-neutral-dark leading-relaxed">{description}</p>
   </div>
 );
@@ -49,32 +49,41 @@ const AchievementSection2: React.FC = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle text="【理論だけじゃない！hikidashi出版がもたらした、輝かしい実績の数々】" />
-        <div className="max-w-4xl mx-auto text-lg text-neutral-dark leading-relaxed space-y-6 mb-12">
+        <SectionTitle>
+          【理論だけじゃない！hikidashi出版がもたらした、輝かしい実績の数々】
+        </SectionTitle>
+        <div className="max-w-6xl mx-auto text-lg text-neutral-dark leading-relaxed space-y-6 mb-12">
           <p>私たちは、ただ「本が作れます」と言うだけではありません。hikidashi出版のサービスは、すでに具体的な、そして驚くべき成果を生み出し始めています。</p>
-          <div className="bg-neutral-light p-8 rounded-xl shadow-lg my-8">
+          <div className="bg-primary-light text-white p-8 rounded-xl shadow-xl my-8">
             <h3 className="text-2xl font-bold text-primary-dark mb-4">すべては、一人の友人の挑戦から始まりました…</h3>
-            <p>サービスを本格的にリリースする前、代表佐藤の親しい友人が「私の経験を本にしてほしい」と手を挙げてくれました。 当時、私たちの持てる最高のシステムと情熱を注ぎ込み、彼女の波乱万丈な人生と熱い想いを一冊の書籍にまとめ上げました。多少の修正は必要だったものの、完成した原稿は、まさに彼女の人生そのものが凝縮されたような、魂のこもった作品となりました。</p>
-            <img src={getImage('achievement2Friend')} alt="友人の成功事例" className="my-6 rounded-lg shadow-md mx-auto"/>
-            <p>彼女自身も、これがどんな結果を生むのかドキドキの挑戦。そして、いざKindleで出版してみると…！ なんと、わずか<HighlightText>2日間で延べ240冊以上がダウンロードされ、Amazon Kindleの特定カテゴリーで見事ランキング1位を獲得したのです！</HighlightText></p>
-            <p className="mt-4">この最初の、しかし圧倒的な成功は、私たちに大きな勇気と「このサービスは本物だ」という確信を与えてくれました。そして、この“身内”での実績だけでなく、実際にお客様としてhikidashi出版をご利用いただいた方々の書籍も、次々と確かな成果を上げています。</p>
+            <p className="text-lg leading-relaxed">
+              実は、私たちが書籍出版サービスを本格的に構築するきっかけとなったのは、代表の佐藤の友人のひとりの成功体験でした。彼は、私たちのサービスの前身となるシステムを活用して、お試しで書籍を制作・出版。 見事、印税収入だけでも、毎月数万円という継続収入の獲得に成功したのです。
+            </p>
+            <div className="max-w-6xl mx-auto mt-6">
+                <img src={getImage('friendSuccess')} alt="友人の成功事例" className="rounded-lg shadow-lg mx-auto max-w-full h-auto"/>
+            </div>
+            <p className="text-lg leading-relaxed mt-4">
+              この成功事例は、その規模の大小に関わらず、私たちにとって非常に大きな意味を持ちました。なぜなら、「技術」と「人の深い洞察」を組み合わせることで、従来の執筆プロセスの常識を覆し、より多くの方が書籍出版という扉を開けることが可能になることを、実際に証明してくれたからです。
+            </p>
           </div>
           <p className="text-xl font-semibold text-primary-dark">hikidashi出版がもたらすのは、「出版」という結果だけではありません。</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {achievements.map((item, index) => (
-            <AchievementItem key={index} title={item.title} description={item.description} imageSrc={item.imageSrc} />
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            {achievements.map((item, index) => (
+              <AchievementItem key={index} title={item.title} description={item.description} imageSrc={item.imageSrc} />
+            ))}
+          </div>
         </div>
         
-        <div className="text-sm mt-4 italic text-center max-w-2xl mx-auto">
+        <div className="text-sm mt-4 italic text-center max-w-6xl mx-auto">
              <p>（事実、代表佐藤の周りでも、印税だけで大きく稼いでいる人は一握りかもしれませんが、本をきっかけにビジネスチャンスを掴んだ人は数えきれないほどいます。）</p>
         </div>
 
-        <div className="mt-16 text-center max-w-3xl mx-auto">
+        <div className="mt-16 text-center max-w-6xl mx-auto">
           <p className="text-neutral-dark leading-relaxed">これらの実績一つひとつが、私たちの貴重な財産です。そして、これらの経験を通じて、私たちは読者に響く本の作り方、効果的なブランディング戦略、さらにはKindleランキングで上位を獲得するためのノウハウを日々研究し、蓄積しています。 この進化したサポート体制で、次に出版されるあなたの成功を全力でバックアップできることを、心から楽しみにしています。</p>
-          <p className="text-2xl font-bold text-secondary-dark mt-8">
+          <p className="text-xl sm:text-2xl font-bold text-secondary-dark mt-8 break-words word-break-keep-all">
             次は、あなたがこれらの実績を、そしてそれ以上の輝かしい成果を手にする番です。
           </p>
         </div>
