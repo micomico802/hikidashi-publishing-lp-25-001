@@ -83,7 +83,8 @@ const WhyChooseUsSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【なぜ、多くの方が他の選択肢ではなく「hikidashi出版」を選ぶのか？】
+          【なぜ、多くの方が他の選択肢ではなく<br />
+          「hikidashi出版」を選ぶのか？】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-16">
           書籍出版をサポートするサービスは、世の中に数多く存在します。その中で、なぜ多くの方が私たちhikidashi出版を選んでくださるのでしょうか？ そこには、他にはない明確な理由と、あなたにとっての大きなメリットがあるのです。

@@ -80,7 +80,8 @@ const PricingSection: React.FC = () => {
     <section id="pricing" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【私たちの価格に込めた想いと、あなたが手にする"価格以上の価値"】
+          【私たちの価格に込めた想いと、<br />
+          あなたが手にする"価格以上の価値"】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           まず、hikidashi出版の各プランの価格をご覧ください。この価格をご覧になって、あなたはどのように感じられたでしょうか？ ここでは、私たちがこの価格設定に至った背景と、そこに込めた熱い想い、そして何よりもあなたがこの投資によって手にするであろう、計り知れない価値について、正直にお話しさせてください。

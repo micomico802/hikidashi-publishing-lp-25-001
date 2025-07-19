@@ -59,7 +59,8 @@ const FutureVisionSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【次はあなたの番！書籍出版が拓く、輝かしい未来の一例】
+          【次はあなたの番！<br />
+          書籍出版が拓く、輝かしい未来の一例】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           hikidashi出版であなたの本が完成したとき、それは単なる「一冊の本」ではありません。 あなたの未来を、今よりもっと豊かで、もっとエキサイティングなものへと塗り替える、魔法のチケットを手にしたようなものなのです。 想像してみてください…こんな未来が、あなたを待っているかもしれません。

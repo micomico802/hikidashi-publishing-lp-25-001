@@ -50,7 +50,8 @@ const AchievementSection2: React.FC = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【理論だけじゃない！hikidashi出版がもたらした、輝かしい実績の数々】
+          【理論だけじゃない！<br />
+          hikidashi出版がもたらした、輝かしい実績の数々】
         </SectionTitle>
         <div className="max-w-6xl mx-auto text-lg text-neutral-dark leading-relaxed space-y-6 mb-12">
           <p>私たちは、ただ「本が作れます」と言うだけではありません。hikidashi出版のサービスは、すでに具体的な、そして驚くべき成果を生み出し始めています。</p>

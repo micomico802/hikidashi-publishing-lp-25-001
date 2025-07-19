@@ -121,7 +121,8 @@ const FaqSection: React.FC = () => {
     <section id="faq" className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【電子書籍出版でよくあるギモン、スッキリ解決タイム！】
+          【電子書籍出版でよくあるギモン、<br />
+          スッキリ解決タイム！】
         </SectionTitle>
         <div className="max-w-6xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-xl">
           {Object.entries(faqData).map(([category, items]) => (

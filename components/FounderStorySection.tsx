@@ -10,7 +10,8 @@ const FounderStorySection: React.FC = () => {
     <section className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【なぜ、私がこのサービスをあなたにお届けしたいのか？～hikidashi出版 代表・佐藤達矢の物語～】
+          【なぜ、私がこのサービスをあなたにお届けしたいのか？<br />
+          ～hikidashi出版 代表・佐藤達矢の物語～】
         </SectionTitle>
         <div className="max-w-6xl mx-auto mt-8">
           <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-xl">

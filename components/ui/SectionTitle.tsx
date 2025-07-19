@@ -8,7 +8,7 @@ interface SectionTitleProps {
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ children, className = '' }) => {
   return (
-    <h2 className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-center text-primary-dark mb-12 md:mb-16 leading-none tracking-tighter break-words word-break-keep-all px-1 sm:px-2 md:px-4 ${className}`}>
+    <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-center text-primary-dark mb-12 md:mb-16 leading-tight tracking-tight break-words word-break-keep-all px-1 sm:px-2 md:px-4 ${className}`}>
       {children}
     </h2>
   );

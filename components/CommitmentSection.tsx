@@ -76,7 +76,8 @@ const CommitmentSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【あなたの挑戦を、私たちは決して無駄にはさせません！hikidashi出版だけの「安心コミットメント」】
+          【あなたの挑戦を、私たちは決して無駄にはさせません！<br />
+          hikidashi出版だけの「安心コミットメント」】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           新しいことに一歩踏み出すとき、期待と同時に不安がよぎるのは当然のことです。 「本当に私でも質の高い本が作れるのだろうか？」 「もし、思ったような成果が出なかったら…？」 そんなあなたの不安な気持ちに、私たちhikidashi出版は真正面から向き合い、安心して最初の一歩を踏み出していただけるよう、独自の「安心コミットメント」をご用意しました。

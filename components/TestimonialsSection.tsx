@@ -69,7 +69,8 @@ const TestimonialsSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【喜びの声、続々！実際にhikidashi出版を体験された方々のリアルな感想】
+          【喜びの声、続々！<br />
+          実際にhikidashi出版を体験された方々のリアルな感想】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
         「本当に話すだけで本になるの？」「どんな体験ができるの？」 そんなあなたの疑問や期待に、実際にhikidashi出版で書籍を完成された先輩たちが、感動の声で応えてくれます。 ここでは、そのほんの一部をご紹介します。

@@ -85,7 +85,8 @@ const BonusesSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-neutral-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【まだあります！あなたの成功を加速させる、hikidashi出版だけの"常識破り"の豪華特典！】
+          【まだあります！あなたの成功を加速させる、<br />
+          hikidashi出版だけの"常識破り"の豪華特典！】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           hikidashi出版は、あなたの貴重な経験と思いを一冊の本にするお手伝いをするだけでは終わりません。 あなたのその本が、そしてあなた自身が、出版後さらに大きく羽ばたき、輝き続けることを心から願っています。 そこで、私たちだからこそできる、他ではまずありえない、特別な4つの特典をご用意いたしました！

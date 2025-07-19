@@ -58,7 +58,8 @@ const TransformationSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle>
-          【hikidashi出版で、あなたはどんな「新しい自分」と出会いますか？】
+          【hikidashi出版で、<br />
+          あなたはどんな「新しい自分」と出会いますか？】
         </SectionTitle>
         <p className="max-w-6xl mx-auto text-center text-lg text-neutral-dark leading-relaxed mb-12">
           hikidashi出版のサービスをご利用いただくことで、あなたは単に「一冊の本が完成する」という結果だけを手にするのではありません。それは、あなたの人生とビジネスに、想像を超えるような素晴らしい変化をもたらす、まさに<HighlightText>「革命の始まり」</HighlightText>なのです。
