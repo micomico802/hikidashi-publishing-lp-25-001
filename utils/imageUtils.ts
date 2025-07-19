@@ -15,7 +15,7 @@ export const availableImages: Record<string, AvailableImage[]> = {
     { name: '003_実績画像', filename: 'achievement-default.png', description: '003_実績セクション用のデフォルト画像' },
   ],
   kindleRank: [
-    { name: '003_Kindleランキング', filename: 'kindle-rank-default.jpg', description: '003_Kindleランキング用のデフォルト画像' },
+    { name: '003_Kindleランキング', filename: 'kindle-rank-default.png', description: '003_Kindleランキング用のデフォルト画像' },
   ],
   transformation: [
     { name: '008_変革イメージ', filename: 'transformation-default.jpg', description: '008_変革セクション用のデフォルト画像' },

@@ -6,7 +6,7 @@ const defaultImages: Record<string, string> = {
   hero: 'hero-default.png',                    // 001_ヒーロー
   problem: 'problem-default.png',              // 002_問題提起
   achievement: 'achievement-default.png',      // 003_実績
-  kindleRank: 'kindle-rank-default.jpg',      // 003_Kindleランキング
+  kindleRank: 'kindle-rank-default.png',      // 003_Kindleランキング
   publishNow: 'publishnow1-default.png',      // 004_今出版すべき理由
   founderProfile: 'founder-profile-default.jpg', // 005_創設者プロフィール
   founderSuccess: 'founder-success-default.jpg', // 005_創設者成功事例

@@ -55,7 +55,7 @@ const FutureVisionSection: React.FC = () => {
           <p className="text-2xl md:text-3xl font-bold text-secondary-dark my-6">
             次は、あなたがその輝かしい物語の主人公になる番です。
           </p>
-          <CallToActionButton text="未来への第一歩を踏み出す" href="https://forms.gle/asaXZkD25iFwtkaG7" className="text-xl" />
+          <CallToActionButton text="未来への第一歩を踏み出す" href="https://forms.gle/asaXZkD25iFwtkaG7" className="text-base sm:text-lg lg:text-xl max-w-xs sm:max-w-none mx-auto" />
         </div>
       </div>
     </section>
