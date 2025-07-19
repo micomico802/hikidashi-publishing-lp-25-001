@@ -21,7 +21,7 @@ const AchievementSection1: React.FC = () => {
               驚くべきことに、モニターの多くの方が、通常であれば半年以上かかると言われる書籍の本文作成を、
               なんと、平均してたったの<HighlightText>「1ヶ月」</HighlightText>で完了されたのです！
             </p>
-            <img src={getImage('achievement')} alt="スピーディーな出版プロセス" className="my-6 rounded-lg shadow-md mx-auto"/>
+            <img src={getImage('achievement')} alt="スピーディーな出版プロセス" className="my-6 rounded-lg shadow-md mx-auto max-w-full h-auto w-full sm:w-4/5 md:w-3/5"/>
             <p>
               これは、あなたが「書けない…」と悩む時間を大幅に短縮し、貴重な経験や知識を、よりスピーディーに世に届けられることを意味しています。
             </p>
@@ -32,7 +32,7 @@ const AchievementSection1: React.FC = () => {
             このサービスを通じて出版された書籍の中には、見事<HighlightText>Kindleの特定カテゴリーでランキング1位を獲得する作品も複数誕生しているのです！</HighlightText>
             この輝かしい成果は、著者の方々の素晴らしいコンテンツはもちろんのこと、私たちの出版サポートが確かな結果に繋がることを力強く証明しています。
           </p>
-          <img src={getImage('kindleRank')} alt="Kindleランキング1位の証" className="my-6 rounded-lg shadow-lg mx-auto"/>
+          <img src={getImage('kindleRank')} alt="Kindleランキング1位の証" className="my-6 rounded-lg shadow-lg mx-auto max-w-full h-auto w-full sm:w-4/5 md:w-3/5"/>
           <p>
             さらに、これらの成功事例は私たちにとっても貴重な学びとなり、「どうすればより多くの方に書籍を手に取っていただき、カテゴリーランキングで上位を目指せるのか」という実践的なノウハウを日々研究し、蓄積することができました。
             これにより、これから出版されるあなたの書籍に対しても、より強力なブランディング戦略と、読者に届けるための効果的なアプローチをご提案できる体制が整っています。

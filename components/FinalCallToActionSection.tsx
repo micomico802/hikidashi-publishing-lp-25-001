@@ -46,7 +46,7 @@ const FinalCallToActionSection: React.FC = () => {
         <CallToActionButton 
           text="無料「目次作成セッション」で最初のページをめくる" 
           href="https://forms.gle/asaXZkD25iFwtkaG7"
-          className="text-base sm:text-lg lg:text-xl px-6 sm:px-10 py-4 sm:py-5 max-w-sm sm:max-w-none mx-auto" 
+          className="text-sm sm:text-base md:text-lg lg:text-xl px-4 sm:px-6 md:px-10 py-4 sm:py-5 max-w-sm sm:max-w-md md:max-w-none mx-auto" 
         />
         <p className="mt-6 text-gray-300">お会いできる日を、心から楽しみにしています！</p>
       </div>

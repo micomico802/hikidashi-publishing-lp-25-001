@@ -3,6 +3,7 @@ import React from 'react';
 import SectionTitle from './ui/SectionTitle';
 import HighlightText from './ui/HighlightText';
 import CallToActionButton from './ui/CallToActionButton';
+import { getImagePath } from '../utils/imageUtils';
 
 interface PlanProps {
   name: string;
@@ -16,24 +17,26 @@ interface PlanProps {
 
 const PlanCard: React.FC<PlanProps> = ({ name, price, description, features, isFeatured = false, imageSrc, href }) => (
   <div className={`rounded-xl shadow-xl p-8 flex flex-col ${isFeatured ? 'bg-primary-dark text-white transform scale-105' : 'bg-white text-neutral-dark'}`}>
-    <img src={imageSrc} alt={name} className="w-full h-48 object-cover rounded-md mb-6" />
-    <h3 className={`text-2xl font-bold mb-2 text-center ${isFeatured ? 'text-secondary-light' : 'text-primary-dark'}`}>{name}</h3>
-    <p className={`text-4xl font-extrabold text-center mb-4 ${isFeatured ? 'text-white' : 'text-neutral-dark'}`}>{price}</p>
+    <div className="aspect-[16/9] bg-neutral-light rounded-md mb-6">
+      <img src={imageSrc} alt={name} className="w-full h-full object-contain" />
+    </div>
+    <h3 className={`text-xl sm:text-2xl font-bold mb-2 text-center ${isFeatured ? 'text-secondary-light' : 'text-primary-dark'}`}>{name}</h3>
+    <p className={`text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-4 ${isFeatured ? 'text-white' : 'text-neutral-dark'}`}>{price}</p>
     <p className={`text-sm text-center mb-6 ${isFeatured ? 'text-gray-300' : 'text-neutral-DEFAULT'}`}>{description}</p>
     <ul className="space-y-3 mb-8 flex-grow">
       {features.map((feature, index) => (
-        <li key={index} className="flex items-center">
-          <svg className={`w-5 h-5 mr-2 flex-shrink-0 ${isFeatured ? 'text-secondary-light' : 'text-secondary'}`} fill="currentColor" viewBox="0 0 20 20">
+        <li key={index} className="flex items-start">
+          <svg className={`w-5 h-5 mr-2 mt-0.5 flex-shrink-0 ${isFeatured ? 'text-secondary-light' : 'text-secondary'}`} fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
           </svg>
-          {feature}
+          <span className="text-sm sm:text-base">{feature}</span>
         </li>
       ))}
     </ul>
     <CallToActionButton 
         text="プランを選択" 
         href={href}
-        className={isFeatured ? 'bg-secondary hover:bg-secondary-dark w-full' : 'bg-primary hover:bg-primary-dark text-white w-full'} />
+        className={isFeatured ? 'bg-secondary hover:bg-secondary-dark w-full text-sm sm:text-base' : 'bg-primary hover:bg-primary-dark text-white w-full text-sm sm:text-base'} />
   </div>
 );
 
@@ -44,7 +47,7 @@ const PricingSection: React.FC = () => {
       price: "12万8000円", 
       description: "手軽に始めたい方向けのプラン", 
       features: ["基本的なインタビュー", "AIによる原稿作成補助", "簡易表紙デザイン"],
-      imageSrc: "https://picsum.photos/seed/plan1/400/250",
+      imageSrc: getImagePath('plan1-default.png'),
       href: "https://docs.google.com/forms/d/e/1FAIpQLSeY8WvQ-Y1nA7B-3-UuopqxZHH4Il2HoYJcCgdv-PkmtFGzHg/viewform?usp=pp_url&entry.588393791=%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%83%97%E3%83%A9%E3%83%B3"
     },
     { 
@@ -53,7 +56,7 @@ const PricingSection: React.FC = () => {
       description: "私たちの基準となるプランです", 
       features: ["詳細インタビュー", "プロライターによる編集", "高品質表紙デザイン", "約6万文字のボリューム"],
       isFeatured: true,
-      imageSrc: "https://picsum.photos/seed/plan2/400/250",
+      imageSrc: getImagePath('plan2-default.png'),
       href: "https://docs.google.com/forms/d/e/1FAIpQLSeY8WvQ-Y1nA7B-3-UuopqxZHH4Il2HoYJcCgdv-PkmtFGzHg/viewform?usp=pp_url&entry.588393791=%E3%83%8F%E3%82%A4%E3%82%B9%E3%83%9A%E3%83%83%E3%82%AF%E3%83%97%E3%83%A9%E3%83%B3"
     },
     { 
@@ -61,7 +64,7 @@ const PricingSection: React.FC = () => {
       price: "54万8000円", 
       description: "出版後のSNS展開までサポート", 
       features: ["ハイスペックプラン全内容", "100日分SNS投稿コンテンツ作成", "コミュニティ優先参加権"],
-      imageSrc: "https://picsum.photos/seed/plan3/400/250",
+      imageSrc: getImagePath('plan3-default.png'),
       href: "https://docs.google.com/forms/d/e/1FAIpQLSeY8WvQ-Y1nA7B-3-UuopqxZHH4Il2HoYJcCgdv-PkmtFGzHg/viewform?usp=pp_url&entry.588393791=%E3%83%8F%E3%82%A4%E3%82%B9%E3%83%9ASNS%E3%83%97%E3%83%A9%E3%83%B3"
     }
   ];

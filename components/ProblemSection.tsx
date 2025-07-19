@@ -32,7 +32,7 @@ const ProblemSection: React.FC = () => {
             </div>
           ))}
           <div className="mt-12 text-center">
-              <img src={getImage('problem')} alt="悩みを抱える人のイメージ" className="my-6 rounded-lg shadow-md mx-auto"/>
+              <img src={getImage('problem')} alt="悩みを抱える人のイメージ" className="my-6 rounded-lg shadow-md mx-auto max-w-full h-auto w-full sm:w-4/5 md:w-3/5 lg:w-1/2"/>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ const FounderStorySection: React.FC = () => {
             <img 
               src={getImage('founderProfile')} 
               alt="佐藤達矢代表" 
-              className="w-40 h-40 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8"
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8 flex-shrink-0"
             />
             <div>
               <p className="text-lg text-neutral-dark leading-relaxed mb-4">

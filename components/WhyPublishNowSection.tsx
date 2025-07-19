@@ -13,7 +13,11 @@ interface ReasonCardProps {
 
 const ReasonCard: React.FC<ReasonCardProps> = ({ title, description, icon, imageSrc }) => (
   <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-    <img src={imageSrc} alt={title} className="w-full md:w-1/3 h-48 md:h-auto object-cover"/>
+    <div className="w-full md:w-2/5">
+      <div className="aspect-[16/9] bg-neutral-light">
+        <img src={imageSrc} alt={title} className="w-full h-full object-contain"/>
+      </div>
+    </div>
     <div className="p-6 md:p-8 flex-1">
       <div className="flex items-center mb-3">
         {icon && <span className="mr-3 text-secondary">{icon}</span>}

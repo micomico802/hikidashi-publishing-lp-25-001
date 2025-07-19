@@ -71,7 +71,7 @@ const TransformationSection: React.FC = () => {
           ))}
         </div>
         <div className="mt-16 text-center">
-            <img src={getImage('transformation')} alt="新しい自分との出会い" className="mx-auto rounded-lg shadow-xl" />
+            <img src={getImage('transformation')} alt="新しい自分との出会い" className="mx-auto rounded-lg shadow-xl max-w-full h-auto w-full sm:w-4/5 md:w-3/5 lg:w-1/2" />
             <p className="mt-8 text-xl font-semibold text-neutral-dark leading-relaxed">これらは、決して遠い夢物語ではありません。 実際に多くの方が体験している、書籍出版がもたらすほんの一部の変化です。</p>
             <p className="text-2xl font-bold text-secondary-dark mt-4">
                 hikidashi出版は、あなたのその輝かしい未来への、最も確実で、最もエキサイティングな一歩となることをお約束します。

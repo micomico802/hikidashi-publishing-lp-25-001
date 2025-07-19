@@ -9,24 +9,24 @@ const defaultImages: Record<string, string> = {
   kindleRank: 'kindle-rank-default.png',      // 003_Kindleランキング
   publishNow: 'publishnow1-default.png',      // 004_今出版すべき理由
   founderProfile: 'founder-profile-default.jpg', // 005_創設者プロフィール
-  founderSuccess: 'founder-success-default.jpg', // 005_創設者成功事例
-  friendSuccess: 'friend-success-default.jpg',   // 005_友人成功事例
-  achievementSection2: 'future3-default.jpg',        // 006_実績セクション2
-  achievement2Friend: 'founder-profile-default.jpg', // 006_友人成功事例
-  achievement2Item1: 'future2-default.jpg',          // 006_実績アイテム1
-  achievement2Item2: 'publishnow1-default.png',      // 006_実績アイテム2
-  achievement2Item3: 'future4-default.jpg',          // 006_実績アイテム3
-  achievement2Item4: 'whychoose2-default.jpg',       // 006_実績アイテム4
-  whyChoose: 'whychoose1-default.jpg',           // 007_選ばれる理由
-  transformation: 'transformation-default.jpg',  // 008_変革
-  futureVision: 'future-vision-default.jpg',    // 009_未来ビジョン
-  plans: 'plan1-default.jpg',                    // 010_料金プラン
-  bonuses: 'whychoose3-default.jpg',             // 011_ボーナス
-  testimonials: 'publishnow2-default.png',       // 012_お客様の声
+  founderSuccess: 'founder-success-default.png', // 005_創設者成功事例
+  friendSuccess: 'friend-success-default.png',   // 005_友人成功事例
+  achievementSection2: 'future3-default.png',        // 006_実績セクション2
+  achievement2Friend: 'friend-success-default.png', // 006_友人成功事例
+  achievement2Item1: 'achievement1-default.png',       // 006_実績アイテム1
+  achievement2Item2: 'achievement2-default.png',       // 006_実績アイテム2
+  achievement2Item3: 'achievement3-default.png',       // 006_実績アイテム3
+  achievement2Item4: 'achievement4-default.png',       // 006_実績アイテム4
+  whyChoose: 'whychoose1-default.png',           // 007_選ばれる理由
+  transformation: 'transformation-default.png',  // 008_変革
+  futureVision: 'future-vision-default.png',    // 009_未来ビジョン
+  plans: 'plan1-default.png',                    // 010_料金プラン
+  bonuses: 'bonus1-default.png',                 // 011_ボーナス
+  testimonials: 'testimonial1-default.png',      // 012_お客様の声
   limitedOffer: 'limited-offer-default.png',    // 013_限定オファー
   faq: 'publishnow3-default.png',                // 014_よくある質問
-  commitment: 'commit1-default.jpg',             // 015_コミットメント
-  finalCta: 'final-cta-default.jpg',            // 016_最終CTA
+  commitment: 'commit1-default.png',             // 015_コミットメント
+  finalCta: 'final-cta-default.png',            // 016_最終CTA
 };
 
 interface ImageContextType {

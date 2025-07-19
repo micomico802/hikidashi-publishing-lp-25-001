@@ -12,7 +12,9 @@ interface AchievementItemProps {
 
 const AchievementItem: React.FC<AchievementItemProps> = ({ title, description, imageSrc }) => (
   <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-    <img src={imageSrc} alt={title} className="w-full h-48 object-cover rounded-md mb-4"/>
+    <div className="aspect-[16/9] bg-neutral-light rounded-md mb-4">
+      <img src={imageSrc} alt={title} className="w-full h-full object-contain"/>
+    </div>
     <h3 className="text-xl font-semibold text-primary-dark mb-2">{title}</h3>
     <p className="text-neutral-dark leading-relaxed">{description}</p>
   </div>

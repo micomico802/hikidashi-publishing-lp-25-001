@@ -12,7 +12,9 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, imageSrc }) => (
   <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-    <img src={imageSrc} alt={title} className="w-full h-56 object-cover"/>
+    <div className="aspect-[16/9] bg-neutral-light">
+      <img src={imageSrc} alt={title} className="w-full h-full object-contain"/>
+    </div>
     <div className="p-6 md:p-8">
       <div className="flex items-center mb-4">
         <span className="text-secondary mr-3">{icon}</span>
@@ -39,7 +41,7 @@ const WhyChooseUsSection: React.FC = () => {
         </>
       ),
       icon: <CostIcon />,
-      imageSrc: getImagePath('whychoose1-default.jpg')
+      imageSrc: getImagePath('whychoose1-default.png')
     },
     {
       title: "あなたの手間は最小限。本当に大切な「あなたらしさ」の追求に、時間を集中できます。",
@@ -49,7 +51,7 @@ const WhyChooseUsSection: React.FC = () => {
         </>
       ),
       icon: <TimeIcon />,
-      imageSrc: getImagePath('whychoose2-default.jpg')
+      imageSrc: getImagePath('whychoose2-default.png')
     },
     {
       title: "出版して終わり、ではありません！ あなたのメッセージを広げるSNS戦略まで徹底サポート（上位プラン限定）。",
@@ -59,7 +61,7 @@ const WhyChooseUsSection: React.FC = () => {
         </>
       ),
       icon: <SnsIcon />,
-      imageSrc: getImagePath('whychoose3-default.jpg')
+      imageSrc: getImagePath('whychoose3-default.png')
     },
     {
       title: "成功者たちが集う、特別なコミュニティへの扉。あなたの未来を加速させる出会いが待っています。",
@@ -69,7 +71,7 @@ const WhyChooseUsSection: React.FC = () => {
         </>
       ),
       icon: <CommunityIcon />,
-      imageSrc: getImagePath('whychoose4-default.jpg')
+      imageSrc: getImagePath('whychoose4-default.png')
     }
   ];
 

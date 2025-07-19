@@ -2,6 +2,7 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
 import HighlightText from './ui/HighlightText';
+import { getImagePath } from '../utils/imageUtils';
 
 interface CommitmentPledgeProps {
   title: string;
@@ -12,7 +13,9 @@ interface CommitmentPledgeProps {
 
 const PledgeCard: React.FC<CommitmentPledgeProps> = ({ title, description, icon, imageSrc }) => (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:shadow-2xl transition-shadow duration-300">
-        <img src={imageSrc} alt={title} className="w-full h-56 object-cover"/>
+        <div className="aspect-[16/9] bg-neutral-light">
+            <img src={imageSrc} alt={title} className="w-full h-full object-contain"/>
+        </div>
         <div className="p-6 md:p-8">
             <div className="flex items-center mb-4 text-secondary">
                 {icon}
@@ -35,13 +38,13 @@ const commitments = [
     title: "１．「あなたらしさ」にとことん寄り添う！【初稿クオリティ保証】",
     description: (<>インタビューを通じて作成した初稿の方向性が、あなたのイメージと大きくかけ離れていたり、「これでは私の想いが伝わらない…」と感じられたりした場合には、ご遠慮なくお申し付けください。私たちは、追加のヒアリングや再構成を無料で行い、あなたが心から「これこそ私の本だ！」とご納得いただけるクオリティになるまで、誠心誠意サポートいたします。 あなたの「伝えたい」という情熱を、最高の形で書籍に反映させることをお約束します。</>),
     icon: <QualityIcon />,
-    imageSrc: "https://picsum.photos/seed/commit1/500/300"
+    imageSrc: getImagePath('commit1-default.png')
   },
   {
     title: "２．「これで本当に大丈夫？」そんな不安を残しません！【納得いくまで修正サポート】",
     description: (<>原稿の細かな表現やニュアンスなど、あなたが「これで完璧！」と思えるまで、修正のご要望には柔軟に対応させていただきます。（※ただし、全体の構成を根本から変更するような大幅な修正は、別途ご相談させていただく場合がございます。） あなたの大切なメッセージが、誤解なく、そして最も魅力的に読者に伝わるよう、最後まで伴走します。</>),
     icon: <EditIcon />,
-    imageSrc: "https://picsum.photos/seed/commit2/500/300"
+    imageSrc: getImagePath('commit2-default.png')
   },
   {
     title: "３．万が一、期待通りの「売上」に繋がらなくても、必ず手に入る「生涯の財産」をお約束します！",
@@ -58,13 +61,13 @@ const commitments = [
       </>
     ),
     icon: <AssetIcon />,
-    imageSrc: "https://picsum.photos/seed/commit3/500/300"
+    imageSrc: getImagePath('commit3-default.png')
   },
   {
     title: "４．出版はゴールじゃない！あなたの「その後」も続く【継続サポート宣言】",
     description: (<>私たちは、本が完成したら「はい、おしまい」という関係ではありません。hikidashi出版が提供する特別なコミュニティや、必要に応じたアドバイスを通じて、あなたの書籍出版後の活動や、さらなるステップアップもサポートし続けます。あなたの成功が、私たちの喜びでもあるのです。</>),
     icon: <SupportIcon />,
-    imageSrc: "https://picsum.photos/seed/commit4/500/300"
+    imageSrc: getImagePath('commit4-default.png')
   }
 ];
 

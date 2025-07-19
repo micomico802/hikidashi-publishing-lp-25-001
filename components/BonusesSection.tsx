@@ -1,6 +1,7 @@
 
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
+import { getImagePath } from '../utils/imageUtils';
 
 interface BonusItemProps {
   title: string;
@@ -12,8 +13,8 @@ interface BonusItemProps {
 
 const BonusCard: React.FC<BonusItemProps> = ({ title, description, icon, imageSrc, badge }) => (
   <div className="bg-white rounded-xl shadow-xl overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-300">
-    <div className="relative">
-      <img src={imageSrc} alt={title} className="w-full h-56 object-cover"/>
+    <div className="relative aspect-[16/9] bg-neutral-light">
+      <img src={imageSrc} alt={title} className="w-full h-full object-contain"/>
       {badge && <span className="absolute top-4 left-4 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">{badge}</span>}
     </div>
     <div className="p-6 md:p-8 flex-grow flex flex-col">
@@ -38,31 +39,31 @@ const ResortIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill=
 const BonusesSection: React.FC = () => {
   const bonuses = [
     {
-      title: "【無料】あなたの“書きたい”がカタチになる！「書籍イメージ具体化＆魔法の目次作成セッション」",
+      title: "【無料】あなたの\"書きたい\"がカタチになる！「書籍イメージ具体化＆魔法の目次作成セッション」",
       description: "まず、お申し込みいただく前に、あなたがどんな本を作りたいのか、その胸に秘めた熱い想いをじっくりとお聞かせください。その内容を元に、私たちのプロの視点から、あなたの書籍の骨子となる「目次案」を無料で作成します。 このセッションを体験するだけで、ぼんやりとしていた書籍の全体像が驚くほどクリアになるだけでなく、あなた自身の考えや経験が深く整理され、新たな気づきが生まれるのを実感できるはずです。",
       icon: <IdeaIcon />,
-      imageSrc: "https://picsum.photos/seed/bonus1/500/300",
+      imageSrc: getImagePath('bonus1-default.png'),
       badge: "特典１"
     },
     {
       title: "AIがあなたの隠れた魅力を丸裸に！？「パーソナルAIプロファイリングデータ」特別進呈！",
       description: "私たちの最新AI技術が、インタビュー中のあなたの言葉遣いや話し方の特徴、さらにはご自身でも気づいていないかもしれない潜在的な強みやユニークな魅力を徹底分析。その興味深い結果を、あなただけの「AIプロファイリングデータ」としてフィードバックいたします。 これからの自己ブランディングや情報発信に、きっと役立つはずです。",
       icon: <ProfileIcon />,
-      imageSrc: "https://picsum.photos/seed/bonus2/500/300",
+      imageSrc: getImagePath('bonus2-default.png'),
       badge: "特典２"
     },
     {
       title: "書籍の価値を無限大に！あなたの講座ビジネスを加速させる「オリジナル講座チラシ」をプレゼント！",
       description: "完成したあなたの書籍は、まさに知識とノウハウの宝庫。その貴重なコンテンツを元に、あなたが将来的に講座やセミナーを開催される際に効果を発揮する、「講座用オリジナルチラシ」をプレゼントいたします。 あなたのビジネス展開を後押しさせてください。",
       icon: <FlyerIcon />,
-      imageSrc: "https://picsum.photos/seed/bonus3/500/300",
+      imageSrc: getImagePath('bonus3-default.png'),
       badge: "特典３"
     },
     {
       title: "【特別なあなたへ贈る、極上のご褒美】会員制リゾートクラブ「エクシブ」ペアご招待券！",
       description: "特定のコミュニティプランにご参加いただいた方には、さらにワンランク上の新たなステージへと踏み出すきっかけになるよう、 私たちからのささやかな感謝の気持ちを込めて、国内有数の会員制リゾートクラブ『エクシブ』のペアご招待券をプレゼントいたします。 最高のリフレッシュと、次なる飛躍への活力を養ってください。",
       icon: <ResortIcon />,
-      imageSrc: "https://picsum.photos/seed/bonus4/500/300",
+      imageSrc: getImagePath('bonus4-default.png'),
       badge: "特典４"
     }
   ];

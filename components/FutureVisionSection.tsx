@@ -2,6 +2,7 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
 import CallToActionButton from './ui/CallToActionButton';
+import { getImagePath } from '../utils/imageUtils';
 
 interface FutureScenarioProps {
   text: string;
@@ -11,7 +12,9 @@ interface FutureScenarioProps {
 
 const FutureScenarioCard: React.FC<FutureScenarioProps> = ({ text, icon, imageSrc }) => (
   <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col">
-    <img src={imageSrc} alt="輝かしい未来" className="w-full h-56 object-cover rounded-t-xl"/>
+    <div className="aspect-[16/9] bg-neutral-light rounded-t-xl overflow-hidden">
+      <img src={imageSrc} alt="輝かしい未来" className="w-full h-full object-contain"/>
+    </div>
     <div className="p-6 flex-grow flex flex-col justify-center items-center text-center">
       <div className="text-secondary mb-4">{icon}</div>
       <p className="text-neutral-dark leading-relaxed text-lg">{text}</p>
@@ -30,12 +33,12 @@ const NewYouIcon: React.FC = () => <svg xmlns="http://www.w3.org/2000/svg" fill=
 
 const FutureVisionSection: React.FC = () => {
   const scenarios = [
-    { text: "あなたの魂を込めた一冊が、誰かの心を動かし、誰かの人生を変える。そして、あなた自身の人生もまた、劇的に、そして鮮やかに好転していく。 そんな感動的な毎日が始まります。", icon: <HeartIcon />, imageSrc: "https://picsum.photos/seed/future1/400/300" },
-    { text: "経済的な不安や時間に追われる日々から解放され、本当にやりたいこと、情熱を注げる活動に思いっきり集中できる。心からの笑顔と、揺るぎない充実感に満ち溢れた「幸せな未来」 が、あなたのものになります。", icon: <SmileIcon />, imageSrc: "https://picsum.photos/seed/future2/400/300" },
-    { text: "あなたの言葉や価値観に強く共感し、「あなたから学びたい！」「あなたに会いたい！」と願う人々が、日本中、いや世界中から自然と集まってくる。あなたの周りがいつも活気と感謝の言葉で満たされる、そんな「理想の光景」 が、あなたの日常になるのです。", icon: <GlobeIcon />, imageSrc: "https://picsum.photos/seed/future3/400/300" },
-    { text: "これまで接点のなかった業界のトップランナーや、心から尊敬できる新しい仲間たちとの刺激的な出会いが次々と生まれ、あなたがまだ「知らなかった新しい世界」の扉が、音を立てて開かれていくでしょう。", icon: <NewWorldIcon />, imageSrc: "https://picsum.photos/seed/future4/400/300" },
-    { text: "たった一冊の本をきっかけに、思いもよらなかった講演の依頼が舞い込んだり、憧れのメディアから出演オファーが来たり、あるいは全く新しいビジネスチャンスが目の前に現れたり…あなたの可能性が無限に広がっていく「世界の雄大さ」 を、その手で掴むことになります。", icon: <RocketIcon />, imageSrc: "https://picsum.photos/seed/future5/400/300" },
-    { text: "「書けない」という長年のコンプレックスから解放され、「著者」という新たな自信と誇りを胸に、さらに大きな夢や目標に向かって、ワクワクしながら挑戦し続ける、新しいあなたに出会えます。", icon: <NewYouIcon />, imageSrc: "https://picsum.photos/seed/future6/400/300" }
+    { text: "あなたの魂を込めた一冊が、誰かの心を動かし、誰かの人生を変える。そして、あなた自身の人生もまた、劇的に、そして鮮やかに好転していく。 そんな感動的な毎日が始まります。", icon: <HeartIcon />, imageSrc: getImagePath('future1-default.png') },
+    { text: "経済的な不安や時間に追われる日々から解放され、本当にやりたいこと、情熱を注げる活動に思いっきり集中できる。心からの笑顔と、揺るぎない充実感に満ち溢れた「幸せな未来」 が、あなたのものになります。", icon: <SmileIcon />, imageSrc: getImagePath('future2-default.png') },
+    { text: "あなたの言葉や価値観に強く共感し、「あなたから学びたい！」「あなたに会いたい！」と願う人々が、日本中、いや世界中から自然と集まってくる。あなたの周りがいつも活気と感謝の言葉で満たされる、そんな「理想の光景」 が、あなたの日常になるのです。", icon: <GlobeIcon />, imageSrc: getImagePath('future3-default.png') },
+    { text: "これまで接点のなかった業界のトップランナーや、心から尊敬できる新しい仲間たちとの刺激的な出会いが次々と生まれ、あなたがまだ「知らなかった新しい世界」の扉が、音を立てて開かれていくでしょう。", icon: <NewWorldIcon />, imageSrc: getImagePath('future4-default.png') },
+    { text: "たった一冊の本をきっかけに、思いもよらなかった講演の依頼が舞い込んだり、憧れのメディアから出演オファーが来たり、あるいは全く新しいビジネスチャンスが目の前に現れたり…あなたの可能性が無限に広がっていく「世界の雄大さ」 を、その手で掴むことになります。", icon: <RocketIcon />, imageSrc: getImagePath('future5-default.png') },
+    { text: "「書けない」という長年のコンプレックスから解放され、「著者」という新たな自信と誇りを胸に、さらに大きな夢や目標に向かって、ワクワクしながら挑戦し続ける、新しいあなたに出会えます。", icon: <NewYouIcon />, imageSrc: getImagePath('future6-default.png') }
   ];
 
   return (
